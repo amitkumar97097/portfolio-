@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amit Kumar - Software Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Amit Kumar</div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm Amit Kumar</h1>
+                    <h2>Software Developer.</h2>
+                    <div>
+                        <a href="#contact" class="btn">Schedule a call <span>👍</span></a>
+                        <a href="assets/resume.pdf" download class="btn btn-outline">Download CV</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/amit-kumar-79b800256" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/amitkumar97097" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="mailto:amitraj02947@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+
+                    <!-- Tech Icons -->
+                    <div class="tech-icons-container">
+                        <h3>Tech Stack:</h3>
+                        <div class="tech-icons">
+                            <div class="tech-icon floating" data-tooltip="HTML5"><i class="fab fa-html5"></i></div>
+                            <div class="tech-icon floating delay-1" data-tooltip="CSS3"><i class="fab fa-css3-alt"></i></div>
+                            <div class="tech-icon floating delay-2" data-tooltip="JavaScript"><i class="fab fa-js"></i></div>
+                            <div class="tech-icon floating delay-3" data-tooltip="React"><i class="fab fa-react"></i></div>
+                            <div class="tech-icon floating" data-tooltip="Node.js"><i class="fab fa-node-js"></i></div>
+                            <div class="tech-icon floating delay-1" data-tooltip="Python"><i class="fab fa-python"></i></div>
+                            <div class="tech-icon floating delay-2" data-tooltip="Git"><i class="fab fa-git-alt"></i></div>
+                            <div class="tech-icon floating delay-3" data-tooltip="AWS"><i class="fab fa-aws"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-img-container">
+                        <img src="assets/images/profile.jpg" alt="Amit Kumar" class="profile-img" id="profileImage">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>Passionate Computer Science and Engineering student
+                    with experience in C/C++ and Full Stack Development.
+                    Completed a micro-credit course at IIT Guwahati and
+                    selected for postgraduate studies at the University of Texas.
+                    Committed to learning and innovation.</p>
+                <p> When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or mentoring aspiring developers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-column">
+                    <div class="experience-item">
+                        <h3>Open Source Contributor</h3>
+                        <h4>GitHub | 2023 - Present</h4>
+                        <p>Contributing to various open source projects and building innovative solutions with modern web technologies.</p>
+                    
+                        <div class="github-stats">
+                            <h4>GitHub Activity</h4>
+                            <div class="github-chart">
+                                <div class="chart-container">
+                                    <canvas id="githubChart"></canvas>
+                                </div>
+                            </div>
+                            <a href="https://github.com/amitkumar97097" target="_blank" class="btn" style="margin-top: 15px;">
+                                View My GitHub Profile
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="experience-column">
+                    <div class="experience-item">
+                        <h3>Frontend Developer</h3>
+                        <h4>Freelance | 2021 - 2023</h4>
+                        <p>Developed responsive web applications using React, JavaScript, and modern CSS frameworks.</p>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <h3>Volunteering</h3>
+                        <div class="volunteering-item">
+                            <div class="volunteering-logo think-india">
+                                <img src="assets/images/think-india.png" alt="Think India">
+                            </div>
+                            <div>
+                                <h4>Creativity & Design Incharge</h4>
+                                <p>Think India | 2022 - Present</p>
+                                <p>Leading design initiatives and creative projects for the organization.</p>
+                            </div>
+                        </div>
+                        <div class="volunteering-item">
+                            <div class="volunteering-logo nss">
+                                <img src="assets/images/nss.png" alt="National Service Scheme">
+                            </div>
+                            <div>
+                                <h4>Group Leader</h4>
+                                <p>National Service Scheme (NSS) | 2021 - 2022</p>
+                                <p>Led a team of volunteers in community service activities and social initiatives.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/project1.jpg" alt="Helpful in One">
+                    </div>
+                    <div class="project-info">
+                        <h3>Helpful in One</h3>
+                        <p>A comprehensive platform that combines multiple helpful tools in one place.</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a>
+                            <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/project2.jpg" alt="Webjet in Big">
+                    </div>
+                    <div class="project-info">
+                        <h3>Webjet in Big</h3>
+                        <p>An advanced web browsing experience with enhanced features.</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a>
+                            <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/project3.jpg" alt="INKS MAN">
+                    </div>
+                    <div class="project-info">
+                        <h3>INKS MAN</h3>
+                        <p>A creative platform for digital artists and designers.</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a>
+                            <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-content">
+                <div class="contact-links">
+                    <a href="https://www.linkedin.com/in/amit-kumar-79b800256" target="_blank" class="contact-link linkedin-link">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/amitkumar97097" target="_blank" class="contact-link github-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="mailto:amitraj02947@gmail.com" class="contact-link email-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Amit Kumar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
