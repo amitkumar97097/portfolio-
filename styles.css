@@ -339,6 +339,129 @@ nav {
   line-height: 1.7;
 }
 
+/* ===== Education Section ===== */
+.education-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.education-subtitle {
+    text-align: center;
+    margin: -25px 0 40px;
+    color: #888;
+    font-size: 15px;
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.education-card {
+    position: relative;
+    padding: 30px 25px;
+    border-radius: 18px;
+    background: var(--card-bg, #ffffff);
+    border: 1px solid rgba(100, 100, 100, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.education-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #6c63ff, #00bcd4);
+}
+
+.education-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(108, 99, 255, 0.15);
+}
+
+.education-icon {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: rgba(108, 99, 255, 0.12);
+    color: #6c63ff;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.education-badge {
+    display: inline-block;
+    padding: 6px 11px;
+    margin-bottom: 14px;
+    border-radius: 20px;
+    background: rgba(108, 99, 255, 0.12);
+    color: #6c63ff;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.education-badge.completed {
+    background: rgba(22, 163, 74, 0.12);
+    color: #16a34a;
+}
+
+.education-card h3 {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0 0 10px;
+}
+
+.education-card h4 {
+    font-size: 15px;
+    margin: 0 0 16px;
+    color: #6c63ff;
+}
+
+.education-specialization {
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.education-specialization i {
+    margin-right: 7px;
+    color: #6c63ff;
+}
+
+.education-meta {
+    padding-top: 15px;
+    border-top: 1px solid rgba(120, 120, 120, 0.2);
+    font-size: 13px;
+    color: #777;
+}
+
+.education-meta i {
+    margin-right: 7px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+    .education-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .education-card {
+        padding: 25px 20px;
+    }
+}
+
 /* Experience Section */
 .experience-grid {
   display: grid;
