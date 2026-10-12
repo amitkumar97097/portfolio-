@@ -2180,3 +2180,122 @@ footer p,
     margin-inline: 4px;
   }
 }
+/* ==========================================================
+   ABOUT SECTION — PREMIUM POLISH
+   Paste this at the VERY END of styles.css
+   ========================================================== */
+
+#about,
+.about-section {
+  position: relative;
+  isolation: isolate;
+}
+
+#about .section-title,
+.about-section .section-title {
+  margin-bottom: 46px;
+}
+
+.about-content {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: clamp(26px, 4vw, 44px);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(37, 99, 235, .11), transparent 42%),
+    linear-gradient(145deg, rgba(17, 33, 59, .96), rgba(12, 25, 46, .96));
+  border: 1px solid rgba(96, 165, 250, .24);
+  border-radius: 24px;
+  box-shadow:
+    0 22px 55px rgba(0, 0, 0, .19),
+    inset 0 1px 0 rgba(255, 255, 255, .035);
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+
+.about-content::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, #60a5fa, #22d3ee, transparent);
+  opacity: .9;
+}
+
+.about-content:hover {
+  border-color: rgba(96, 165, 250, .38);
+  box-shadow:
+    0 26px 62px rgba(0, 0, 0, .23),
+    0 0 28px rgba(37, 99, 235, .07);
+  transform: translateY(-2px);
+}
+
+.about-content p {
+  max-width: 900px;
+  margin: 0 auto 18px;
+  color: #b7c7df;
+  font-size: clamp(.98rem, 1.15vw, 1.06rem);
+  line-height: 1.9;
+  letter-spacing: .005em;
+}
+
+.about-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Give paragraph copy a clear, readable rhythm */
+.about-content p + p {
+  padding-top: 1px;
+}
+
+/* Keep the section title crisp and aligned with the card */
+#about .section-title,
+.about-section .section-title {
+  color: #f1f6ff;
+  letter-spacing: -.04em;
+}
+
+#about .section-title::after,
+.about-section .section-title::after {
+  width: 76px;
+  height: 4px;
+  background: linear-gradient(90deg, #60a5fa, #22d3ee);
+  box-shadow: 0 0 16px rgba(34, 211, 238, .18);
+}
+
+@media (max-width: 768px) {
+  #about .section-title,
+  .about-section .section-title {
+    margin-bottom: 36px;
+  }
+
+  .about-content {
+    padding: 25px 22px;
+    border-radius: 19px;
+  }
+
+  .about-content p {
+    font-size: .97rem;
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-content {
+    padding: 22px 18px;
+  }
+
+  .about-content p {
+    font-size: .93rem;
+    line-height: 1.78;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-content {
+    transition: none;
+  }
+  .about-content:hover {
+    transform: none;
+  }
+}
