@@ -1040,3 +1040,106 @@ footer p { line-height: 1.7; }
     transition-duration: .01ms !important;
   }
 }
+
+/* ===== Premium Portfolio Background ===== */
+
+body {
+    background:
+        radial-gradient(
+            ellipse at 12% 15%,
+            rgba(96, 165, 250, 0.12),
+            transparent 38%
+        ),
+        radial-gradient(
+            ellipse at 88% 35%,
+            rgba(167, 139, 250, 0.12),
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse at 50% 90%,
+            rgba(56, 189, 248, 0.08),
+            transparent 40%
+        ),
+        #fbfcff;
+    background-attachment: fixed;
+}
+
+/* Subtle grid pattern */
+.hero {
+    position: relative;
+    isolation: isolate;
+    background: transparent;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        linear-gradient(
+            rgba(148, 163, 184, 0.09) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(148, 163, 184, 0.09) 1px,
+            transparent 1px
+        );
+    background-size: 48px 48px;
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        rgba(0, 0, 0, 0.6) 65%,
+        transparent 100%
+    );
+}
+
+/* Soft background glow behind profile photo */
+.hero-image {
+    position: relative;
+    isolation: isolate;
+}
+
+.hero-image::before {
+    content: "";
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        rgba(96, 165, 250, 0.24),
+        rgba(167, 139, 250, 0.22)
+    );
+    filter: blur(45px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Keep sections light and readable */
+.section {
+    background-color: rgba(255, 255, 255, 0.68);
+    backdrop-filter: blur(3px);
+}
+
+.section:nth-of-type(even) {
+    background-color: rgba(241, 245, 255, 0.58);
+}
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+    body {
+        background-attachment: scroll;
+    }
+
+    .hero-image::before {
+        width: 240px;
+        height: 240px;
+        filter: blur(32px);
+    }
+}
