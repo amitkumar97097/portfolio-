@@ -1737,3 +1737,250 @@ footer p { color: #9fb0cc; }
     transition: none;
   }
 }
+
+
+
+/* ==========================================================
+   FINAL COMPATIBILITY & POLISH OVERRIDES
+   Works with the updated script.js and premium dark-blue layout.
+   ========================================================== */
+
+/* Reveal only when JS is active; content remains visible if JS fails. */
+.js-loaded .reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 650ms ease, transform 650ms cubic-bezier(.2,.7,.2,1);
+}
+.js-loaded .reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.js-loaded .tech-icon-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 450ms ease var(--icon-delay, 0ms),
+    transform 450ms ease var(--icon-delay, 0ms);
+}
+.js-loaded .tech-icon-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.tech-icon.is-hovered,
+.social-links a.is-hovered,
+.social-icons a.is-hovered {
+  color: #e0f2fe;
+  border-color: rgba(34, 211, 238, .65);
+  box-shadow: 0 0 24px rgba(34, 211, 238, .18);
+}
+
+/* Keep the header and anchor targets from overlapping. */
+html {
+  scroll-padding-top: 100px;
+}
+section[id] {
+  scroll-margin-top: 100px;
+}
+.nav-links a.active {
+  color: #67e8f9;
+}
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* Make the hero right column work with the HTML's visual wrapper. */
+.hero-visual-column {
+  min-width: 0;
+}
+.hero-visual-column .hero-image {
+  flex: none;
+}
+.hero-visual-column .tech-icons-container {
+  min-width: 0;
+}
+.hero-visual-column .tech-icons {
+  justify-content: flex-start;
+}
+.profile-img-container {
+  isolation: isolate;
+}
+.profile-img-container::before {
+  pointer-events: none;
+}
+.profile-img-container .profile-img {
+  border-radius: 50%;
+}
+
+/* Card hover remains smooth while JS adds a restrained 3D transform. */
+.project-card,
+.education-card,
+.leadership-item,
+.experience-column {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+.project-card:hover,
+.education-card:hover,
+.leadership-item:hover {
+  border-color: rgba(96, 165, 250, .34);
+}
+
+/* Footer selectors are commonly either footer p or .footer p. */
+footer p,
+.footer p {
+  color: #9fb0cc;
+}
+
+/* Mobile and tablet layout: prevent clipping and keep content readable. */
+@media (max-width: 900px) {
+  .hero-content {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, .85fr);
+    gap: 28px;
+  }
+  .hero h1 {
+    font-size: clamp(2.65rem, 5.2vw, 4rem);
+  }
+  .hero-visual-column .profile-img-container {
+    width: clamp(245px, 31vw, 320px);
+  }
+  .hero-visual-column .tech-icon {
+    width: 50px;
+    height: 50px;
+    flex-basis: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 130px;
+  }
+  section[id] {
+    scroll-margin-top: 130px;
+  }
+  header {
+    padding: 11px 0;
+  }
+  nav {
+    gap: 10px;
+  }
+  .nav-links {
+    justify-content: center;
+    gap: 8px 14px;
+  }
+  .hero {
+    min-height: auto;
+    padding: 138px 0 58px;
+  }
+  .hero-content {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+  }
+  .hero-text {
+    order: 1;
+    width: 100%;
+    text-align: center;
+  }
+  .hero-visual-column {
+    order: 2;
+    width: 100%;
+    gap: 24px;
+  }
+  .hero-visual-column .hero-image {
+    order: 1;
+    width: 100%;
+  }
+  .hero-visual-column .tech-icons-container {
+    order: 2;
+    width: 100%;
+    text-align: center;
+  }
+  .hero-visual-column .tech-icons-container h3::after {
+    margin-inline: auto;
+  }
+  .hero-visual-column .tech-icons {
+    justify-content: center;
+  }
+  .hero-visual-column .profile-img-container {
+    width: clamp(220px, 55vw, 285px);
+  }
+  .hero-description {
+    margin-inline: auto;
+  }
+  .social-links {
+    justify-content: center;
+  }
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 540px) {
+  .container {
+    width: min(100% - 32px, var(--content-width));
+  }
+  .hero {
+    padding-top: 150px;
+    padding-bottom: 48px;
+  }
+  .hero h1 {
+    font-size: clamp(2.35rem, 10vw, 3.3rem);
+  }
+  .hero h2 {
+    font-size: 1.05rem;
+  }
+  .hero-description {
+    font-size: .94rem;
+  }
+  .hero-visual-column .profile-img-container {
+    width: clamp(205px, 62vw, 260px);
+  }
+  .hero-visual-column .tech-icons {
+    gap: 8px;
+  }
+  .hero-visual-column .tech-icon {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+    font-size: 1.15rem;
+  }
+  .btn {
+    padding: 11px 14px;
+    font-size: .87rem;
+  }
+  .projects-grid,
+  .education-grid,
+  .leadership-content {
+    grid-template-columns: 1fr;
+  }
+  .contact-content {
+    padding: 22px 15px;
+  }
+  .contact-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .contact-link {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .js-loaded .reveal-on-scroll,
+  .js-loaded .tech-icon-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
