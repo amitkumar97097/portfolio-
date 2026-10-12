@@ -2462,4 +2462,193 @@ footer p,
     transform: none;
   }
 }
+/* ==========================================================
+   TECHNICAL SKILLS — PREMIUM SKILL CARDS
+   Paste at the VERY END of styles.css
+   Uses existing skill category rows and doesn't require HTML edits.
+   ========================================================== */
+
+#skills,
+#technical-skills,
+.skills-section {
+  position: relative;
+  isolation: isolate;
+}
+
+#skills .section-title,
+#technical-skills .section-title,
+.skills-section .section-title {
+  margin-bottom: 42px;
+  letter-spacing: -.045em;
+}
+
+/* Main skills list */
+#skills .skills-content,
+#technical-skills .skills-content,
+.skills-section .skills-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+/* The screenshot's rows are commonly paragraphs/divs containing a bold label. */
+#skills .skills-content > *,
+#technical-skills .skills-content > *,
+.skills-section .skills-content > *,
+#skills .skill-category,
+#technical-skills .skill-category,
+.skills-section .skill-category {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 24px 24px 24px 28px;
+  overflow: hidden;
+  color: #c6d4e8;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(34, 211, 238, .07), transparent 42%),
+    linear-gradient(145deg, rgba(18, 34, 61, .98), rgba(12, 25, 46, .98));
+  border: 1px solid rgba(96, 165, 250, .2);
+  border-radius: 17px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
+  font-size: 1rem;
+  line-height: 1.85;
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+#skills .skills-content > *::before,
+#technical-skills .skills-content > *::before,
+.skills-section .skills-content > *::before,
+#skills .skill-category::before,
+#technical-skills .skill-category::before,
+.skills-section .skill-category::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #60a5fa, #22d3ee);
+  opacity: .9;
+}
+
+#skills .skills-content > *:hover,
+#technical-skills .skills-content > *:hover,
+.skills-section .skills-content > *:hover,
+#skills .skill-category:hover,
+#technical-skills .skill-category:hover,
+.skills-section .skill-category:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34, 211, 238, .42);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, .2), 0 0 22px rgba(34, 211, 238, .05);
+}
+
+#skills strong,
+#technical-skills strong,
+.skills-section strong,
+#skills b,
+#technical-skills b,
+.skills-section b {
+  color: #f0f7ff;
+  font-weight: 750;
+}
+
+/* Skill tags: these apply automatically if the HTML already uses spans/badges. */
+#skills .skill-tag,
+#technical-skills .skill-tag,
+.skills-section .skill-tag,
+#skills .skills-content span,
+#technical-skills .skills-content span,
+.skills-section .skills-content span {
+  display: inline-flex;
+  align-items: center;
+  margin: 5px 5px 2px 0;
+  padding: 5px 10px;
+  color: #bdeaff;
+  background: rgba(56, 189, 248, .08);
+  border: 1px solid rgba(56, 189, 248, .18);
+  border-radius: 999px;
+  font-size: .88rem;
+  line-height: 1.5;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+#skills .skill-tag:hover,
+#technical-skills .skill-tag:hover,
+.skills-section .skill-tag:hover,
+#skills .skills-content span:hover,
+#technical-skills .skills-content span:hover,
+.skills-section .skills-content span:hover {
+  color: #ecfeff;
+  background: rgba(34, 211, 238, .14);
+  border-color: rgba(34, 211, 238, .36);
+}
+
+/* Optional category icons if present in the HTML */
+#skills .skill-icon,
+#technical-skills .skill-icon,
+.skills-section .skill-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 14px;
+  color: #7dd3fc;
+  background: rgba(56, 189, 248, .1);
+  border: 1px solid rgba(56, 189, 248, .2);
+  border-radius: 12px;
+  font-size: 1.2rem;
+}
+
+/* If the HTML has four plain category rows, arrange as a 2x2 card grid. */
+@media (min-width: 769px) {
+  #skills .skills-content > *,
+  #technical-skills .skills-content > *,
+  .skills-section .skills-content > * {
+    min-height: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  #skills .skills-content,
+  #technical-skills .skills-content,
+  .skills-section .skills-content {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  #skills .skills-content > *,
+  #technical-skills .skills-content > *,
+  .skills-section .skills-content > *,
+  #skills .skill-category,
+  #technical-skills .skill-category,
+  .skills-section .skill-category {
+    padding: 20px 20px 20px 24px;
+    border-radius: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #skills .skills-content > *,
+  #technical-skills .skills-content > *,
+  .skills-section .skills-content > *,
+  #skills .skill-category,
+  #technical-skills .skill-category,
+  .skills-section .skill-category {
+    transition: none;
+  }
+
+  #skills .skills-content > *:hover,
+  #technical-skills .skills-content > *:hover,
+  .skills-section .skills-content > *:hover,
+  #skills .skill-category:hover,
+  #technical-skills .skill-category:hover,
+  .skills-section .skill-category:hover {
+    transform: none;
+  }
+}
 
