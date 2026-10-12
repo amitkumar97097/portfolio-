@@ -2299,3 +2299,167 @@ footer p,
     transform: none;
   }
 }
+/* ==========================================================
+   EDUCATION SECTION — PROFESSIONAL TIMELINE CARDS
+   Paste at the very end of styles.css
+   ========================================================== */
+
+#education,
+.education-section {
+  position: relative;
+  isolation: isolate;
+}
+
+#education .section-title,
+.education-section .section-title {
+  margin-bottom: 42px;
+}
+
+/* Use a balanced grid if the HTML contains separate education cards.
+   For the current single-card/list layout, keep the content centered. */
+#education .container,
+.education-section .container {
+  width: min(100% - 40px, 1180px);
+}
+
+#education .education-content,
+.education-section .education-content {
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+#education .education-card,
+.education-section .education-card {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(24px, 3vw, 34px);
+  background:
+    radial-gradient(ellipse at 0 0, rgba(37, 99, 235, .10), transparent 45%),
+    linear-gradient(145deg, rgba(17, 33, 59, .97), rgba(12, 25, 46, .97));
+  border: 1px solid rgba(96, 165, 250, .23);
+  border-radius: 22px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .18);
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+
+#education .education-card::before,
+.education-section .education-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, #60a5fa, #22d3ee, transparent);
+}
+
+#education .education-card:hover,
+.education-section .education-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(34, 211, 238, .34);
+  box-shadow: 0 24px 54px rgba(0, 0, 0, .24), 0 0 26px rgba(37, 99, 235, .06);
+}
+
+/* The screenshot uses education entries separated by horizontal rules. */
+#education .education-card h3,
+.education-section .education-card h3,
+#education .education-item h3,
+.education-section .education-item h3 {
+  color: #eef5ff;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  font-weight: 750;
+  line-height: 1.5;
+  letter-spacing: -.02em;
+  margin-bottom: 7px;
+}
+
+#education .education-card h4,
+.education-section .education-card h4,
+#education .education-item h4,
+.education-section .education-item h4 {
+  color: #7dd3fc;
+  font-size: .98rem;
+  font-weight: 650;
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+
+#education .education-card p,
+.education-section .education-card p,
+#education .education-item p,
+.education-section .education-item p {
+  color: #b2c3dc;
+  font-size: .96rem;
+  line-height: 1.75;
+}
+
+/* If the entries are inside one shared card, style each entry as a row. */
+#education .education-item,
+.education-section .education-item {
+  position: relative;
+  padding: 0 0 24px;
+  margin: 0 0 24px;
+  border-bottom: 1px solid rgba(148, 163, 184, .17);
+}
+
+#education .education-item:last-child,
+.education-section .education-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+/* Year labels can use .education-year or a span inside an entry. */
+#education .education-year,
+.education-section .education-year {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 10px;
+  padding: 4px 10px;
+  color: #a5e6ff;
+  background: rgba(56, 189, 248, .09);
+  border: 1px solid rgba(56, 189, 248, .2);
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+/* Keep the section from looking empty on wide screens. */
+@media (min-width: 1000px) {
+  #education .education-card,
+  .education-section .education-card {
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 768px) {
+  #education .container,
+  .education-section .container {
+    width: min(100% - 32px, 1180px);
+  }
+
+  #education .education-card,
+  .education-section .education-card {
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+
+  #education .education-item,
+  .education-section .education-item {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #education .education-card,
+  .education-section .education-card {
+    transition: none;
+  }
+
+  #education .education-card:hover,
+  .education-section .education-card:hover {
+    transform: none;
+  }
+}
+
