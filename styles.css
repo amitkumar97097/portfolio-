@@ -1079,3 +1079,256 @@ footer p {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* =========================================================
+   PREMIUM DARK-BLUE THEME — overrides for the existing HTML
+   Appended intentionally so the original selectors/layout stay compatible.
+   ========================================================= */
+:root {
+  color-scheme: dark;
+  --primary: #60a5fa;
+  --primary-light: #93c5fd;
+  --primary-dark: #2563eb;
+  --secondary: #22d3ee;
+  --dark: #eaf2ff;
+  --dark-alt: #cbd8ee;
+  --gray: #9fb0cc;
+  --gray-light: rgba(148, 163, 184, 0.18);
+  --surface: #111d33;
+  --surface-soft: #0b1426;
+  --line: rgba(148, 163, 184, 0.19);
+  --shadow-sm: 0 8px 26px rgba(0, 0, 0, 0.20);
+  --shadow-md: 0 18px 44px rgba(0, 0, 0, 0.28);
+  --shadow-lg: 0 24px 65px rgba(37, 99, 235, 0.22);
+}
+
+html { background: #07101f; }
+
+body {
+  color: #eaf2ff;
+  background: #07101f;
+}
+
+body::before {
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(37, 99, 235, 0.22), transparent 36%),
+    radial-gradient(ellipse at 88% 18%, rgba(8, 145, 178, 0.14), transparent 32%),
+    radial-gradient(ellipse at 55% 78%, rgba(99, 102, 241, 0.12), transparent 36%),
+    linear-gradient(135deg, #07101f, #0a1730 52%, #080f20);
+  background-size: 150% 150%;
+}
+
+header,
+header.scrolled {
+  background: rgba(7, 16, 31, 0.84);
+  border-bottom-color: rgba(148, 163, 184, 0.14);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+}
+
+.logo { color: #f1f6ff; }
+.nav-links a { color: #b8c8e3; }
+.nav-links a:hover { color: #67e8f9; }
+.nav-links a::after {
+  background: linear-gradient(90deg, #60a5fa, #22d3ee);
+}
+a:focus-visible, button:focus-visible {
+  outline-color: rgba(34, 211, 238, 0.72);
+}
+
+.hero {
+  background: transparent;
+}
+.hero::before {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.055) 1px, transparent 1px);
+  mask-image: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.62) 65%, transparent 100%);
+}
+.hero h1 { color: #f1f6ff; }
+.hero h2 { color: #9fb9dd; }
+.hero-description { color: #a9bad4; }
+
+.availability-badge {
+  color: #86efac;
+  background: rgba(20, 83, 45, 0.28);
+  border-color: rgba(74, 222, 128, 0.28);
+}
+.availability-dot {
+  background: #4ade80;
+  box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.12);
+}
+
+.btn {
+  color: #061225;
+  background: linear-gradient(135deg, #60a5fa, #22d3ee);
+  border-color: transparent;
+  box-shadow: 0 10px 28px rgba(37, 99, 235, 0.24);
+}
+.btn:hover {
+  box-shadow: 0 14px 32px rgba(34, 211, 238, 0.2);
+}
+.btn-outline {
+  color: #b9dcff;
+  background: rgba(12, 27, 49, 0.66);
+  border-color: rgba(96, 165, 250, 0.62);
+}
+.btn-outline:hover {
+  color: #061225;
+  background: #60a5fa;
+}
+
+.social-links a,
+.tech-icon {
+  color: #8fc5ff;
+  background: rgba(17, 29, 51, 0.88);
+  border-color: rgba(148, 163, 184, 0.18);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+.social-links a:hover,
+.tech-icon:hover {
+  color: #67e8f9;
+  border-color: rgba(34, 211, 238, 0.42);
+  box-shadow: 0 12px 28px rgba(8, 145, 178, 0.16);
+}
+.tech-icons-container h3 { color: #dceaff; }
+.tech-icon[data-tooltip]::after {
+  color: #eaf2ff;
+  background: #172742;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.hero-image::before {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.38), rgba(34, 211, 238, 0.22));
+  filter: blur(54px);
+}
+.profile-img-container {
+  background: #101d33;
+  border-color: rgba(207, 226, 255, 0.88);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(96, 165, 250, 0.14);
+}
+
+.section {
+  background: rgba(8, 18, 35, 0.76);
+  border-top-color: rgba(148, 163, 184, 0.10);
+}
+.section:nth-of-type(even) {
+  background: rgba(12, 25, 47, 0.82);
+}
+.section-title { color: #f0f6ff; }
+.section-title::after {
+  background: linear-gradient(90deg, #60a5fa, #22d3ee);
+}
+
+.about-content,
+.education-card,
+.experience-column,
+.leadership-item,
+.project-card,
+.contact-content,
+.skills-content p,
+.github-chart {
+  color: #dbe8fb;
+  background: rgba(15, 29, 52, 0.86);
+  border-color: rgba(148, 163, 184, 0.17);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+}
+.about-content p,
+.experience-item p,
+.experience-item li,
+.education-meta,
+.education-specialization,
+.leadership-item p,
+.project-info p,
+.footer p {
+  color: #a9bad4;
+}
+.education-card::before {
+  background: linear-gradient(90deg, #60a5fa, #22d3ee);
+}
+.education-icon {
+  color: #7dd3fc;
+  background: rgba(56, 189, 248, 0.12);
+}
+.education-badge {
+  color: #a5b4fc;
+  background: rgba(129, 140, 248, 0.13);
+}
+.education-badge.completed {
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.12);
+}
+.education-card h4,
+.experience-item h4,
+.leadership-item h4 { color: #7dd3fc; }
+
+.experience-item h3,
+.skills-content strong,
+.leadership-item h3,
+.project-info h3 { color: #eaf2ff; }
+.experience-item {
+  border-bottom-color: rgba(148, 163, 184, 0.16);
+}
+.skills-content p {
+  border-left-color: #38bdf8;
+}
+.leadership-item {
+  border-left-color: #38bdf8;
+}
+.volunteering-logo {
+  background: #f8fafc;
+  border-color: rgba(148, 163, 184, 0.2);
+}
+.project-image { background: #0b1426; }
+.project-links a {
+  color: #9fd0ff;
+  background: rgba(37, 99, 235, 0.13);
+  border-color: rgba(96, 165, 250, 0.24);
+}
+.project-links a:hover {
+  color: #061225;
+  background: #67e8f9;
+}
+.contact-link {
+  color: #dbe8fb;
+  background: rgba(11, 22, 41, 0.9);
+  border-color: rgba(148, 163, 184, 0.2);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+}
+.contact-link:hover {
+  border-color: rgba(34, 211, 238, 0.4);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+}
+.github-link,
+.github-link i { color: #dbe8fb; }
+footer {
+  background: rgba(5, 13, 26, 0.92);
+  border-top-color: rgba(148, 163, 184, 0.14);
+}
+footer p { color: #91a5c4; }
+.floating-action-btn {
+  color: #061225;
+  background: linear-gradient(135deg, #60a5fa, #22d3ee);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.3);
+}
+
+/* Fine, consistent glow on interactive cards */
+.education-card:hover,
+.experience-column:hover,
+.leadership-item:hover,
+.project-card:hover {
+  border-color: rgba(96, 165, 250, 0.32);
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(96, 165, 250, 0.04);
+}
+
+/* Keep long navigation labels and hero content usable on smaller screens */
+@media (max-width: 768px) {
+  header { background: rgba(7, 16, 31, 0.94); }
+  .hero-image { order: 1; }
+  .hero-text { order: 2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  .hero::before,
+  .hero-image::before { animation: none !important; }
+}
