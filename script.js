@@ -1,174 +1,174 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Header scroll effect
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+document.addEventListener('DOMContentLoaded', () => {
+  'use strict';
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const header = document.querySelector('header');
+  const profileImg = document.getElementById('profileImage');
+  const techIcons = document.querySelectorAll('.tech-icon');
+  const projectCards = document.querySelectorAll('.project-card');
+  const backToTopBtn = document.querySelector('.back-to-top');
+
+  /* Header scroll effect */
+  const updateScrollUI = () => {
+    const scrolled = window.scrollY > 50;
+    if (header) header.classList.toggle('scrolled', scrolled);
+    if (backToTopBtn) backToTopBtn.classList.toggle('active', window.scrollY > 300);
+  };
+
+  updateScrollUI();
+  window.addEventListener('scroll', updateScrollUI, { passive: true });
+
+  /* Smooth in-page navigation; account for the sticky header */
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (event) => {
+      const href = anchor.getAttribute('href');
+      if (!href || href === '#') return;
+
+      let target;
+      try {
+        target = document.querySelector(href);
+      } catch (_) {
+        return;
+      }
+      if (!target) return;
+
+      event.preventDefault();
+      const headerHeight = header ? header.getBoundingClientRect().height : 0;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+      window.scrollTo({ top: Math.max(0, targetTop), behavior: prefersReducedMotion ? 'auto' : 'smooth' });
     });
-  
-    // Smooth scrolling for navigation
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-  
-    // Profile image adjustment
-    const profileImg = document.getElementById('profileImage');
-    if (profileImg) {
-        profileImg.style.objectPosition = 'center 20%';
-        profileImg.addEventListener('mouseenter', () => {
-            profileImg.style.transform = 'scale(1.03)';
-        });
-        profileImg.addEventListener('mouseleave', () => {
-            profileImg.style.transform = 'scale(1)';
-        });
-    }
-  
-    // GitHub Chart
-    const githubCtx = document.getElementById('githubChart');
-    if (githubCtx) {
-        const githubChart = new Chart(githubCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                datasets: [{
-                    label: 'GitHub Contributions',
-                    data: [12, 19, 8, 15, 22, 18, 25, 12, 19, 27, 15, 20],
-                    backgroundColor: '#2563eb',
-                    borderColor: '#1d4ed8',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            display: false
-                        }
-                    },
-                    x: {
-                        grid: {
-                            display: false
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    tooltip: {
-                        backgroundColor: '#1e293b',
-                        titleColor: '#f8fafc',
-                        bodyColor: '#f8fafc',
-                        borderColor: '#64748b',
-                        borderWidth: 1,
-                        padding: 10
-                    }
-                }
-            }
-        });
-    }
-  
-    // Animate tech icons when they come into view
-    const techIcons = document.querySelectorAll('.tech-icon');
-    const animateIcons = () => {
-        techIcons.forEach(icon => {
-            const iconPosition = icon.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.3;
-            
-            if (iconPosition < screenPosition) {
-                icon.classList.add('floating');
-            }
-        });
-    };
-  
-    // Run once on load
-    animateIcons();
-    
-    // Run on scroll
-    window.addEventListener('scroll', animateIcons);
-  
-    // Animate elements when scrolling
-    const animateOnScroll = () => {
-        const elements = document.querySelectorAll('.section, .project-card, .experience-item, .contact-item');
-        
-        elements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (elementPosition < windowHeight - 100) {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            }
-        });
-    };
-  
-    // Set initial state for animated elements
-    document.querySelectorAll('.section, .project-card, .experience-item, .contact-item').forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    });
-  
-    // Run once on load
-    animateOnScroll();
-    
-    // Run on scroll
-    window.addEventListener('scroll', animateOnScroll);
-  
-    // Project cards tilt effect
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const xAxis = (window.innerWidth / 2 - e.pageX) / 20;
-            const yAxis = (window.innerHeight / 2 - e.pageY) / 20;
-            card.style.transform = `perspective(1000px) rotateY(${xAxis}deg) rotateX(${yAxis}deg) translateY(-10px) scale(1.02)`;
-        });
-        
-        card.addEventListener('mouseenter', () => {
-            card.style.transition = 'none';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transition = 'all 0.5s ease';
-            card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
-        });
-    });
-  
-    // Back to top button
-    const backToTopBtn = document.querySelector('.back-to-top');
-    if (backToTopBtn) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('active');
-            } else {
-                backToTopBtn.classList.remove('active');
-            }
-        });
-  
-        backToTopBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
   });
+
+  /* Profile photo: crop and subtle hover effect */
+  if (profileImg) {
+    profileImg.style.objectPosition = 'center 20%';
+    profileImg.addEventListener('error', () => {
+      profileImg.classList.add('image-unavailable');
+      // The browser's alt text remains available if the local image path is incorrect.
+      console.warn('Profile image could not be loaded. Check that profile.jpg is beside index.html.');
+    });
+    profileImg.addEventListener('load', () => profileImg.classList.remove('image-unavailable'));
+
+    const profileContainer = profileImg.closest('.profile-img-container');
+    if (profileContainer && !prefersReducedMotion) {
+      profileContainer.addEventListener('pointermove', (event) => {
+        if (event.pointerType === 'touch') return;
+        const rect = profileContainer.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+        profileImg.style.transform = `scale(1.035) translate(${x * 4}px, ${y * 4}px)`;
+      });
+      profileContainer.addEventListener('pointerleave', () => {
+        profileImg.style.transform = '';
+      });
+    }
+  }
+
+  /* Reveal sections and cards when they enter the viewport */
+  const revealElements = document.querySelectorAll(
+    '.section, .project-card, .experience-item, .contact-item, .leadership-item'
+  );
+
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    revealElements.forEach((element) => element.classList.add('reveal-on-scroll'));
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+
+    revealElements.forEach((element) => revealObserver.observe(element));
+  } else {
+    revealElements.forEach((element) => element.classList.add('is-visible'));
+  }
+
+  /* Tech icon reveal and tooltip accessibility */
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const iconObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    techIcons.forEach((icon) => {
+      icon.classList.add('tech-icon-reveal');
+      iconObserver.observe(icon);
+      const tooltip = icon.getAttribute('data-tooltip');
+      if (tooltip && !icon.hasAttribute('aria-label')) icon.setAttribute('aria-label', tooltip);
+    });
+  }
+
+  /* Project card tilt on pointer devices only */
+  if (!prefersReducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    projectCards.forEach((card) => {
+      card.addEventListener('pointermove', (event) => {
+        const rect = card.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        const rotateY = (x - 0.5) * 5;
+        const rotateX = (0.5 - y) * 5;
+        card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      });
+      card.addEventListener('pointerleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+
+  /* Back-to-top button */
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    });
+  }
+
+  /* Optional GitHub chart. Values below are illustrative, not live GitHub data. */
+  const githubCanvas = document.getElementById('githubChart');
+  if (githubCanvas && typeof window.Chart === 'function') {
+    try {
+      new window.Chart(githubCanvas, {
+        type: 'bar',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          datasets: [{
+            label: 'Illustrative Contributions',
+            data: [12, 19, 8, 15, 22, 18, 25, 12, 19, 27, 15, 20],
+            backgroundColor: 'rgba(56, 189, 248, 0.72)',
+            borderColor: '#38bdf8',
+            borderWidth: 1,
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: prefersReducedMotion ? false : { duration: 700 },
+          scales: {
+            y: { beginAtZero: true, grid: { color: 'rgba(148, 163, 184, 0.12)' }, ticks: { color: '#b6c7df' } },
+            x: { grid: { display: false }, ticks: { color: '#b6c7df' } }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: '#0b1730',
+              titleColor: '#f8fafc',
+              bodyColor: '#e2e8f0',
+              borderColor: '#38bdf8',
+              borderWidth: 1,
+              padding: 10
+            }
+          }
+        }
+      });
+    } catch (error) {
+      console.error('GitHub chart could not be initialized:', error);
+    }
+  }
+});
