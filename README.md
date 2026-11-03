@@ -13,6 +13,7 @@ A responsive personal portfolio showcasing my software development experience, t
 - Featured projects
 - Resume access
 - Contact and social media links
+- Service request form with email notifications via FormSubmit
 - Responsive design for desktop and mobile devices
 
 ## 🛠️ Technologies Used
@@ -63,3 +64,11 @@ I'm interested in software engineering, full-stack development, and practical AI
 ---
 
 ⭐ If you find this project useful, feel free to explore my portfolio and other repositories.
+
+
+## Premium updates
+
+- Refined hero section with animated decorative background and achievement highlights.
+- Elevated project cards, skills, experience and education presentation.
+- Responsive layouts and accessible scroll-reveal motion.
+- Service enquiry modal with email submission through FormSubmit (requires first-time email activation).
