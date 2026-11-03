@@ -3,327 +3,634 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amit Kumar - Software Developer</title>
+
+    <meta name="description" content="Amit Kumar - Software Developer, Full Stack Developer and AI/ML Enthusiast. M.Tech CSE (AI) student at IIIT Guwahati.">
+    <meta name="keywords" content="Amit Kumar, Software Developer, Full Stack Developer, AI, Machine Learning, React, Python">
+    <meta name="author" content="Amit Kumar">
+    <meta name="theme-color" content="#101b33">
+
+    <title>Amit Kumar | Software Developer & AI Enthusiast</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Amit Kumar</div>
-<div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Technical Skills</a>
-    <a href="#projects">Projects</a>
-                    <a href="#services">Services</a>
-    <a href="#leadership">Leadership</a>
-    <a href="#contact">Contact</a>
-</div>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <p class="hero-kicker"><span class="kicker-line"></span> SOFTWARE ENGINEER · AI ENTHUSIAST</p>
-                    <h1>Hi, I'm <span class="hero-name-accent">Amit Kumar</span></h1>
-                    <h2>Software Developer | AI/ML Enthusiast</h2>
-                    <p class="hero-description">I’m an M.Tech CSE (Artificial Intelligence) student at IIIT Guwahati, building thoughtful full-stack products and practical AI solutions. I enjoy turning complex problems into clean, reliable experiences.</p>
-                    <div class="hero-proof"><span><strong>350+</strong> DSA problems</span><span><strong>0.89</strong> GNN F1-score</span><span><strong>92%</strong> NLP accuracy</span></div>
-                    <div class="availability-badge"><span class="availability-dot"></span>Open to SDE &amp; AI/ML Opportunities</div>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn">Let’s work together <i class="fas fa-arrow-up-right-from-square"></i></a>
-                        <a href="https://drive.google.com/file/d/1cYmqYLzdBwhyXwq-drMe0lQJdcBK55Y7/view" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Download CV</a>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/amit-kumar-79b800256/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/amitkumar97097" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="mailto:amitraj02947@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-                <div class="hero-visual-column">
-                    <div class="hero-image">
-                        <div class="profile-img-container">
-                            <img src="./profile.jpg" alt="Amit Kumar" class="profile-img" id="profileImage" onerror="this.style.display='none'; document.getElementById('profileFallback').style.display='flex';">
-                            <div id="profileFallback" class="profile-fallback" style="display:none;" aria-label="Amit Kumar">AK</div>
-                        </div>
-                    </div>
-                    <div class="tech-icons-container">
-                        <h3>Tech Stack:</h3>
-                        <div class="tech-icons">
-                            <div class="tech-icon floating" data-tooltip="HTML5"><i class="fab fa-html5"></i></div>
-                            <div class="tech-icon floating delay-1" data-tooltip="CSS3"><i class="fab fa-css3-alt"></i></div>
-                            <div class="tech-icon floating delay-2" data-tooltip="JavaScript"><i class="fab fa-js"></i></div>
-                            <div class="tech-icon floating delay-3" data-tooltip="React"><i class="fab fa-react"></i></div>
-                            <div class="tech-icon floating" data-tooltip="Node.js"><i class="fab fa-node-js"></i></div>
-                            <div class="tech-icon floating delay-1" data-tooltip="Python"><i class="fab fa-python"></i></div>
-                            <div class="tech-icon floating delay-2" data-tooltip="Git"><i class="fab fa-git-alt"></i></div>
-                            <div class="tech-icon floating delay-3" data-tooltip="AWS"><i class="fab fa-aws"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-<!-- About Section -->
-<section class="section" id="about">
+<!-- NAVIGATION -->
+<header>
     <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <p>
-                I am Amit Kumar, a Computer Science and Engineering graduate
-                from NERIST, currently pursuing an M.Tech in Computer Science
-                and Engineering with a specialization in Artificial Intelligence
-                at IIIT Guwahati.
-            </p>
+        <nav>
+            <a href="#home" class="logo">Amit Kumar<span>.</span></a>
 
-            <p>
-                I specialize in Full Stack Development, Software Engineering,
-                and Artificial Intelligence. I have gained hands-on experience
-                through my AI/ML internship at IIT Guwahati and development
-                experience at VisionInternz and GDG NERIST. My technical skills
-                include C++, Python, JavaScript, React.js, Node.js, Express.js,
-                MongoDB, SQL, Machine Learning, and Graph Neural Networks (GNNs).
-                I have also solved 200+ LeetCode problems.
-            </p>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Technical Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#services">Services</a>
+                <a href="#leadership">Leadership</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </div>
+</header>
 
-            <p>
-                My projects include an AI-powered sentiment analysis chatbot
-                using BERT, a full-stack Hotel Reservation System, and a Fake
-                Influencer Detection system using Machine Learning and Graph
-                Neural Networks.
-            </p>
 
-            <p>
-                I am currently seeking Software Development Engineer (SDE),
-                Full Stack Development, and AI/ML internship opportunities
-                where I can apply my technical skills, solve real-world
-                problems, and contribute to impactful software solutions.
-            </p>
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
+
+            <div class="hero-text">
+
+                <p class="hero-kicker">
+                    <span class="kicker-line"></span>
+                    SOFTWARE ENGINEER · AI ENTHUSIAST
+                </p>
+
+                <h1>
+                    Hi, I'm
+                    <span class="hero-name-accent">Amit Kumar</span>
+                </h1>
+
+                <h2>
+                    Software Developer | AI/ML Enthusiast
+                </h2>
+
+                <p class="hero-description">
+                    I'm an M.Tech CSE (Artificial Intelligence) student
+                    at IIIT Guwahati, building thoughtful full-stack
+                    products and practical AI solutions. I enjoy turning
+                    complex problems into clean, reliable experiences.
+                </p>
+
+                <div class="hero-proof">
+                    <span><strong>350+</strong> DSA Problems</span>
+                    <span><strong>0.89</strong> GNN F1-Score</span>
+                    <span><strong>92%</strong> NLP Accuracy</span>
+                </div>
+
+                <div class="availability-badge">
+                    <span class="availability-dot"></span>
+                    Open to SDE & AI/ML Opportunities
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">
+                        Let's Work Together
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </a>
+
+                    <a
+                        href="https://drive.google.com/file/d/1cYmqYLzdBwhyXwq-drMe0lQJdcBK55Y7/view"
+                        class="btn btn-outline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="fas fa-download"></i>
+                        Download CV
+                    </a>
+                </div>
+
+                <div class="social-links">
+                    <a
+                        href="https://www.linkedin.com/in/amit-kumar-79b800256/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                    >
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                    <a
+                        href="https://github.com/amitkumar97097"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                    >
+                        <i class="fab fa-github"></i>
+                    </a>
+
+                    <a
+                        href="mailto:amitraj02947@gmail.com"
+                        aria-label="Email"
+                    >
+                        <i class="fas fa-envelope"></i>
+                    </a>
+
+                    <a
+                        href="https://leetcode.com/u/amitraj0/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LeetCode"
+                    >
+                        <i class="fas fa-code"></i>
+                    </a>
+                </div>
+
+            </div>
+
+
+            <div class="hero-visual-column">
+
+                <div class="hero-image">
+                    <div class="profile-img-container">
+
+                        <img
+                            src="./profile.jpg"
+                            alt="Amit Kumar"
+                            class="profile-img"
+                            id="profileImage"
+                        >
+
+                        <div
+                            id="profileFallback"
+                            class="profile-fallback"
+                            style="display:none;"
+                        >
+                            AK
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="tech-icons-container">
+                    <h3>Core Technologies</h3>
+
+                    <div class="tech-icons">
+                        <div class="tech-icon floating" data-tooltip="HTML5">
+                            <i class="fab fa-html5"></i>
+                        </div>
+
+                        <div class="tech-icon floating delay-1" data-tooltip="CSS3">
+                            <i class="fab fa-css3-alt"></i>
+                        </div>
+
+                        <div class="tech-icon floating delay-2" data-tooltip="JavaScript">
+                            <i class="fab fa-js"></i>
+                        </div>
+
+                        <div class="tech-icon floating delay-3" data-tooltip="React">
+                            <i class="fab fa-react"></i>
+                        </div>
+
+                        <div class="tech-icon floating" data-tooltip="Node.js">
+                            <i class="fab fa-node-js"></i>
+                        </div>
+
+                        <div class="tech-icon floating delay-1" data-tooltip="Python">
+                            <i class="fab fa-python"></i>
+                        </div>
+
+                        <div class="tech-icon floating delay-2" data-tooltip="Git">
+                            <i class="fab fa-git-alt"></i>
+                        </div>
+
+                        <div class="tech-icon floating delay-3" data-tooltip="AWS">
+                            <i class="fab fa-aws"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </div>
 </section>
-<!-- Education Section -->
-    <section class="section" id="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="experience-grid">
-                <div class="experience-column">
-                    <div class="experience-item">
-                        <h3>M.Tech in Computer Science and Engineering</h3>
-                        <h4>Indian Institute of Information Technology Guwahati (IIIT Guwahati) | 2026–2028</h4>
-                        <p>Specialization: Artificial Intelligence</p>
-                    </div>
-                    <div class="experience-item">
-                        <h3>B.Tech in Computer Science and Engineering</h3>
-                        <h4>North Eastern Regional Institute of Science and Technology (NERIST) | 2022–2026</h4>
-                        <p>CGPA: 7.5/10</p>
-                    </div>
-                    <div class="experience-item">
-                        <h3>Senior Secondary (Class XII)</h3>
-                        <h4>Shivam Vidya Mandir, Patna | 2020–2022</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-<!-- Experience Section -->
-<section class="section" id="experience">
+
+
+<!-- ABOUT SECTION -->
+<section class="section" id="about">
     <div class="container">
-        <h2 class="section-title">Experience</h2>
+
+        <h2 class="section-title">About Me</h2>
+
+        <div class="about-content">
+
+            <p>
+                I am Amit Kumar, a Computer Science and Engineering
+                graduate from NERIST, currently pursuing an M.Tech
+                in Computer Science and Engineering with a
+                specialization in Artificial Intelligence at
+                IIIT Guwahati.
+            </p>
+
+            <p>
+                I specialize in Full Stack Development, Software
+                Engineering, and Artificial Intelligence. I have
+                gained hands-on experience through my AI/ML
+                internship at IIT Guwahati and development
+                experience at VisionInternz and GDG NERIST.
+                My technical skills include C++, Python,
+                JavaScript, React.js, Node.js, Express.js,
+                MongoDB, SQL, Machine Learning, and Graph
+                Neural Networks (GNNs).
+            </p>
+
+            <p>
+                My projects include an AI-powered sentiment
+                analysis chatbot using BERT, a full-stack Hotel
+                Reservation System, and a Fake Influencer
+                Detection system using Machine Learning and
+                Graph Neural Networks.
+            </p>
+
+            <p>
+                I am currently seeking Software Development
+                Engineer (SDE), Full Stack Development, and
+                AI/ML internship opportunities where I can
+                apply my technical skills, solve real-world
+                problems, and contribute to impactful
+                software solutions.
+            </p>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- EDUCATION SECTION -->
+<section class="section" id="education">
+    <div class="container">
+
+        <h2 class="section-title">Education</h2>
 
         <div class="experience-grid">
 
-            <!-- GDG NERIST -->
             <div class="experience-column">
+
+                <div class="experience-item">
+                    <span class="timeline-dot"></span>
+
+                    <h3>
+                        M.Tech in Computer Science and Engineering
+                    </h3>
+
+                    <h4>
+                        IIIT Guwahati | 2026–2028
+                    </h4>
+
+                    <p>
+                        Specialization: Artificial Intelligence
+                    </p>
+                </div>
+
+
+                <div class="experience-item">
+                    <span class="timeline-dot"></span>
+
+                    <h3>
+                        B.Tech in Computer Science and Engineering
+                    </h3>
+
+                    <h4>
+                        NERIST | 2022–2026
+                    </h4>
+
+                    <p>
+                        CGPA: 7.5/10
+                    </p>
+                </div>
+
+
+                <div class="experience-item">
+                    <span class="timeline-dot"></span>
+
+                    <h3>Senior Secondary (Class XII)</h3>
+
+                    <h4>
+                        Shivam Vidya Mandir, Patna | 2020–2022
+                    </h4>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- EXPERIENCE SECTION -->
+<section class="section" id="experience">
+    <div class="container">
+
+        <h2 class="section-title">Professional Experience</h2>
+
+        <div class="experience-grid">
+
+            <div class="experience-column">
+
                 <div class="experience-item">
                     <h3>Google Developer Group (GDG) NERIST</h3>
-                    <h4>Web Developer | Jan 2025 – May 2026</h4>
-                    <p>
-                        <strong>On-Campus</strong>
-                    </p>
+
+                    <h4>
+                        Web Developer | Jan 2025 – May 2026
+                    </h4>
+
+                    <p><strong>On-Campus</strong></p>
+
                     <ul>
-                        <li>Developed responsive web applications using React.js, HTML, CSS, and JavaScript.</li>
-                        <li>Integrated RESTful APIs and optimized frontend state management for improved performance.</li>
-                        <li>Collaborated in a 4-member Agile team using Git/GitHub for feature development and code reviews.</li>
+                        <li>
+                            Developed responsive web applications
+                            using React.js, HTML, CSS, and JavaScript.
+                        </li>
+
+                        <li>
+                            Integrated RESTful APIs and optimized
+                            frontend state management.
+                        </li>
+
+                        <li>
+                            Collaborated in a 4-member Agile team
+                            using Git/GitHub.
+                        </li>
                     </ul>
                 </div>
+
             </div>
 
-            <!-- IIT Guwahati -->
+
             <div class="experience-column">
+
                 <div class="experience-item">
                     <h3>Indian Institute of Technology Guwahati</h3>
-                    <h4>AI / Machine Learning Intern | Jun 2025 – Jul 2025</h4>
+
+                    <h4>
+                        AI / Machine Learning Intern | Jun 2025 – Jul 2025
+                    </h4>
+
                     <p><strong>Guwahati, Assam</strong></p>
+
                     <ul>
-                        <li>Developed an NLP-based sentiment analysis chatbot using Python, BERT, Flask, and Scikit-learn.</li>
-                        <li>Performed text preprocessing, feature engineering, and transformer model fine-tuning.</li>
-                        <li>Built a Flask web application for real-time sentiment prediction and inference.</li>
+                        <li>
+                            Developed an NLP-based sentiment analysis
+                            chatbot using Python, BERT, Flask,
+                            and Scikit-learn.
+                        </li>
+
+                        <li>
+                            Performed text preprocessing, feature
+                            engineering, and transformer model
+                            fine-tuning.
+                        </li>
+
+                        <li>
+                            Built a Flask web application for
+                            real-time sentiment prediction.
+                        </li>
                     </ul>
                 </div>
+
             </div>
 
-            <!-- VisionInternz -->
+
             <div class="experience-column">
+
                 <div class="experience-item">
                     <h3>VisionInternz</h3>
-                    <h4>Full Stack Development Intern | May 2023 – Aug 2023</h4>
+
+                    <h4>
+                        Full Stack Development Intern | May 2023 – Aug 2023
+                    </h4>
+
                     <p><strong>Remote</strong></p>
+
                     <ul>
-                        <li>Developed full-stack web applications using the MERN stack.</li>
-                        <li>Designed and integrated RESTful APIs with Express.js and MongoDB.</li>
-                        <li>Used Git/GitHub and participated in deployment workflows with basic CI/CD practices.</li>
+                        <li>
+                            Developed full-stack web applications
+                            using the MERN stack.
+                        </li>
+
+                        <li>
+                            Designed and integrated RESTful APIs
+                            with Express.js and MongoDB.
+                        </li>
+
+                        <li>
+                            Used Git/GitHub and participated in
+                            deployment workflows.
+                        </li>
                     </ul>
                 </div>
+
             </div>
 
         </div>
     </div>
 </section>
-<!-- Projects Section -->
+
+
+<!-- PROJECTS SECTION -->
 <section class="section" id="projects">
     <div class="container">
-        <h2 class="section-title">Projects</h2>
+
+        <h2 class="section-title">Featured Projects</h2>
 
         <div class="projects-grid">
-     
-<!-- Project 1: Fake Influencer Detection -->
-<div class="project-card">
-    <div class="project-image">
-        <img src="./project1.jpg"
-             alt="Fake Influencer Detection using ML and GNNs">
-    </div>
 
-    <div class="project-info">
-        <h3>Fake Influencer Detection using ML &amp; GNNs</h3>
 
-        <p>
-            Developed a fake influencer detection system using
-            the TwiBot-20 dataset, Machine Learning, and
-            Graph Neural Networks.
-        </p>
+            <article class="project-card">
 
-        <p>
-            <strong>Tech Stack:</strong>
-            Python, GraphSAGE, Scikit-learn, Streamlit
-        </p>
-
-        <div class="project-links">
-            <a href="https://github.com/amitkumar97097/fake-influencer-bot-detection"
-               target="_blank"
-               rel="noopener noreferrer">
-                <i class="fab fa-github"></i> GitHub
-            </a>
-
-            <a href="https://fake-influencer-bot-detection.streamlit.app/"
-               target="_blank"
-               rel="noopener noreferrer">
-                <i class="fas fa-external-link-alt"></i> Live Demo
-            </a>
-        </div>
-    </div>
-</div>
-
-            <!-- Project: Enterprise Entity Resolution Pipeline -->
-            <div class="project-card">
                 <div class="project-image">
-                    <img src="./entity-resolution.jpg"
-                         alt="Enterprise Entity Resolution Pipeline">
+                    <img
+                        src="./project1.jpg"
+                        alt="Fake Influencer Detection"
+                        loading="lazy"
+                    >
                 </div>
+
                 <div class="project-info">
-                    <h3>Enterprise Entity Resolution Pipeline</h3>
+
+                    <h3>
+                        Fake Influencer Detection using ML & GNNs
+                    </h3>
+
                     <p>
-                        Developed a high-performance data engineering microservice to ingest, 
-                        cleanse, and resolve messy entity records using DuckDB and Jaro-Winkler fuzzy matching.
+                        Developed a fake influencer detection system
+                        using the TwiBot-20 dataset, Machine Learning,
+                        and Graph Neural Networks.
                     </p>
+
                     <p>
                         <strong>Tech Stack:</strong>
-                        Python, FastAPI, DuckDB, Docker, Pytest, GitHub Actions, REST APIs
+                        Python, GraphSAGE, Scikit-learn, Streamlit
                     </p>
+
                     <div class="project-links">
-                        <a href="https://github.com/amitkumar97097/entity-resolution-pipeline"
-                            target="_blank" rel="noopener noreferrer">
+
+                        <a
+                            href="https://github.com/amitkumar97097/fake-influencer-bot-detection"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             <i class="fab fa-github"></i> GitHub
                         </a>
-                        <a href="https://entity-resolution-pipeline-2.onrender.com/docs"
-                            target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
+
+                        <a
+                            href="https://fake-influencer-bot-detection.streamlit.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <i class="fas fa-external-link-alt"></i>
+                            Live Demo
                         </a>
+
                     </div>
                 </div>
-            </div>
+            </article>
 
-            <!-- Project 2: AI Sentiment Analysis Chatbot -->
-            <div class="project-card">
+
+            <article class="project-card">
+
                 <div class="project-image">
-                    <img src="./project2.jpg"
-                         alt="AI Chatbot for Sentiment Analysis">
+                    <img
+                        src="./entity-resolution.jpg"
+                        alt="Enterprise Entity Resolution Pipeline"
+                        loading="lazy"
+                    >
                 </div>
+
                 <div class="project-info">
-                    <h3>AI Chatbot – Sentiment Analysis</h3>
+
+                    <h3>Enterprise Entity Resolution Pipeline</h3>
+
                     <p>
-                        Developed an AI-powered chatbot using the BERT
-                        transformer model for sentiment analysis, including
-                        text preprocessing and model fine-tuning.
+                        Developed a data engineering microservice
+                        to ingest, cleanse, and resolve entity records
+                        using DuckDB and Jaro-Winkler fuzzy matching.
                     </p>
+
+                    <p>
+                        <strong>Tech Stack:</strong>
+                        Python, FastAPI, DuckDB, Docker, Pytest,
+                        GitHub Actions, REST APIs
+                    </p>
+
+                    <div class="project-links">
+
+                        <a
+                            href="https://github.com/amitkumar97097/entity-resolution-pipeline"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+
+                        <a
+                            href="https://entity-resolution-pipeline-2.onrender.com/docs"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <i class="fas fa-external-link-alt"></i>
+                            Live Demo
+                        </a>
+
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="project-card">
+
+                <div class="project-image">
+                    <img
+                        src="./project2.jpg"
+                        alt="AI Sentiment Analysis Chatbot"
+                        loading="lazy"
+                    >
+                </div>
+
+                <div class="project-info">
+
+                    <h3>AI Chatbot – Sentiment Analysis</h3>
+
+                    <p>
+                        Developed an AI-powered chatbot using
+                        the BERT transformer model for sentiment
+                        analysis, including text preprocessing
+                        and model fine-tuning.
+                    </p>
+
                     <p>
                         <strong>Tech Stack:</strong>
                         Python, BERT, Flask, NLP
                     </p>
+
                     <div class="project-links">
-                        <a href="https://github.com/amitkumar97097"
-                           target="_blank" rel="noopener noreferrer">
+
+                        <a
+                            href="https://github.com/amitkumar97097"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             <i class="fab fa-github"></i> GitHub
                         </a>
+
                     </div>
                 </div>
-            </div>
+            </article>
 
-            <!-- Project 3: Hotel Reservation System -->
-            <div class="project-card">
+
+            <article class="project-card">
+
                 <div class="project-image">
-                    <img src="./project3.jpg"
-                         alt="Hotel Reservation System">
+                    <img
+                        src="./project3.jpg"
+                        alt="Hotel Reservation System"
+                        loading="lazy"
+                    >
                 </div>
+
                 <div class="project-info">
+
                     <h3>Hotel Reservation System</h3>
+
                     <p>
-                        Developed a MERN-based hotel booking platform with
-                        secure JWT authentication, room booking, and
-                        reservation management.
+                        Developed a MERN-based hotel booking platform
+                        with secure JWT authentication, room booking,
+                        and reservation management.
                     </p>
+
                     <p>
                         <strong>Tech Stack:</strong>
-                        React.js, Node.js, Express.js, MongoDB, JWT, REST APIs
+                        React.js, Node.js, Express.js, MongoDB,
+                        JWT, REST APIs
                     </p>
+
                     <div class="project-links">
-                        <a href="https://github.com/amitkumar97097"
-                           target="_blank" rel="noopener noreferrer">
+
+                        <a
+                            href="https://github.com/amitkumar97097"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             <i class="fab fa-github"></i> GitHub
                         </a>
+
                     </div>
                 </div>
-            </div>
+            </article>
 
         </div>
     </div>
 </section>
-    
-<!-- Technical Skills Section -->
+
+
+<!-- TECHNICAL SKILLS -->
 <section class="section" id="skills">
     <div class="container">
+
         <h2 class="section-title">Technical Skills</h2>
 
         <div class="skills-content">
+
             <p>
                 <strong>Languages:</strong>
                 C++, Python, JavaScript, SQL
@@ -331,251 +638,546 @@
 
             <p>
                 <strong>Frameworks:</strong>
-                React, Node.js, Express.js
+                React.js, Node.js, Express.js
             </p>
 
             <p>
                 <strong>Machine Learning:</strong>
-                NLP, Neural Networks, TensorFlow, Scikit-learn, BERT
+                NLP, Neural Networks, TensorFlow,
+                Scikit-learn, BERT
             </p>
 
             <p>
                 <strong>Core Subjects:</strong>
-                Data Structures &amp; Algorithms, OOP, DBMS, OS,
-                Computer Networks
+                Data Structures & Algorithms, OOP,
+                DBMS, OS, Computer Networks
             </p>
-        </div>
-    </div>
-</section>   
-<!-- Leadership & Positions of Responsibility -->
-<section class="section" id="leadership">
-    <div class="container">
-        <h2 class="section-title">
-            Leadership &amp; Positions of Responsibility
-        </h2>
-
-        <div class="leadership-content">
-
-            
-<!-- Think India -->
-<div class="leadership-item">
-    <div class="volunteering-item">
-        <div class="volunteering-logo think-india">
-            <img src="think-india.png" alt="Think India">
-        </div>
-        <div>
-            <h3>Creativity &amp; Design Lead</h3>
-            <h4>Think India (NERIST Chapter) | 2022 – Present</h4>
-            <p>
-                Led digital design initiatives for campus events,
-                student-led programs, and creative projects.
-            </p>
-        </div>
-    </div>
-</div>
-            <!-- GDG NERIST -->
-            <div class="leadership-item">
-                <div class="volunteering-item">
-                    <div class="volunteering-logo">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div>
-                        <h3>Web Developer</h3>
-                        <h4>Google Developer Group (GDG) NERIST | Jan 2025 – May 2026</h4>
-                        <p>
-                            Contributed to web development projects and
-                            supported developer-focused workshops.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-<!-- NSS -->
-<div class="leadership-item">
-    <div class="volunteering-item">
-        <div class="volunteering-logo nss">
-            <img src="nss.png" alt="National Service Scheme">
-        </div>
-        <div>
-            <h3>Group Leader</h3>
-            <h4>National Service Scheme (NSS) | 2021 – 2022</h4>
-            <p>
-                Led a team of volunteers in community service
-                activities and social initiatives.
-            </p>
-        </div>
-    </div>
-</div>
 
         </div>
     </div>
 </section>
 
 
-    <!-- Services Section -->
-    <section class="section services-section" id="services">
-        <div class="container">
-            <h2 class="section-title">Services I Can Help With</h2>
-            <p class="services-intro">
-                Have an idea or a project in mind? Choose a service and send me a project request.
-                I'll review the details and get back to you by email.
-            </p>
+<!-- LEADERSHIP -->
+<section class="section" id="leadership">
+    <div class="container">
 
-            <div class="services-grid">
-                <article class="service-card">
-                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3>Website Development</h3>
-                    <p>Responsive portfolio, business websites, landing pages, and modern web interfaces.</p>
-                    <button class="btn service-request-btn" type="button" data-service="Website Development">
-                        Request this service <i class="fas fa-arrow-right"></i>
-                    </button>
-                </article>
+        <h2 class="section-title">
+            Leadership & Positions of Responsibility
+        </h2>
 
-                <article class="service-card">
-                    <div class="service-icon"><i class="fas fa-layer-group"></i></div>
-                    <h3>Full-Stack Applications</h3>
-                    <p>Frontend and backend development, REST APIs, authentication, and database integration.</p>
-                    <button class="btn service-request-btn" type="button" data-service="Full-Stack Application Development">
-                        Request this service <i class="fas fa-arrow-right"></i>
-                    </button>
-                </article>
+        <div class="leadership-content">
 
-                <article class="service-card">
-                    <div class="service-icon"><i class="fas fa-brain"></i></div>
-                    <h3>AI / ML Solutions</h3>
-                    <p>Machine learning prototypes, NLP workflows, chatbot development, and data-driven solutions.</p>
-                    <button class="btn service-request-btn" type="button" data-service="AI / ML Solution">
-                        Request this service <i class="fas fa-arrow-right"></i>
-                    </button>
-                </article>
 
-                <article class="service-card">
-                    <div class="service-icon"><i class="fas fa-code-branch"></i></div>
-                    <h3>API & Backend Development</h3>
-                    <p>Backend services, API integration, database design, and application improvements.</p>
-                    <button class="btn service-request-btn" type="button" data-service="API & Backend Development">
-                        Request this service <i class="fas fa-arrow-right"></i>
-                    </button>
-                </article>
+            <div class="leadership-item">
+
+                <div class="volunteering-item">
+
+                    <div class="volunteering-logo think-india">
+                        <img
+                            src="./think-india.png"
+                            alt="Think India"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <div>
+                        <h3>Creativity & Design Lead</h3>
+
+                        <h4>
+                            Think India (NERIST Chapter) | 2022 – Present
+                        </h4>
+
+                        <p>
+                            Led digital design initiatives for
+                            campus events, student-led programs,
+                            and creative projects.
+                        </p>
+                    </div>
+
+                </div>
             </div>
+
+
+            <div class="leadership-item">
+
+                <div class="volunteering-item">
+
+                    <div class="volunteering-logo">
+                        <i class="fas fa-code"></i>
+                    </div>
+
+                    <div>
+                        <h3>Web Developer</h3>
+
+                        <h4>
+                            Google Developer Group (GDG) NERIST |
+                            Jan 2025 – May 2026
+                        </h4>
+
+                        <p>
+                            Contributed to web development projects
+                            and supported developer-focused workshops.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="leadership-item">
+
+                <div class="volunteering-item">
+
+                    <div class="volunteering-logo nss">
+                        <img
+                            src="./nss.png"
+                            alt="National Service Scheme"
+                            loading="lazy"
+                        >
+                    </div>
+
+                    <div>
+                        <h3>Group Leader</h3>
+
+                        <h4>
+                            National Service Scheme (NSS) | 2021 – 2022
+                        </h4>
+
+                        <p>
+                            Led a team of volunteers in community
+                            service activities and social initiatives.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
-    </section>
-
-    <!-- Service Request Modal -->
-    <div class="service-modal" id="serviceModal" aria-hidden="true">
-        <div class="service-modal-backdrop" data-close-service-modal></div>
-        <section class="service-modal-panel" role="dialog" aria-modal="true"
-                 aria-labelledby="serviceModalTitle">
-            <button class="service-modal-close" type="button" aria-label="Close form"
-                    data-close-service-modal>&times;</button>
-            <p class="service-modal-eyebrow">PROJECT ENQUIRY</p>
-            <h2 id="serviceModalTitle">Request a Service</h2>
-            <p class="service-modal-description">
-                Share a few details about your requirement. Your request will be sent to my email.
-            </p>
-
-            <form class="service-request-form"
-                  action="https://formsubmit.co/amitraj02947@gmail.com"
-                  method="POST">
-                <input type="hidden" name="_subject" value="New Service Request — Amit Kumar Portfolio">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_captcha" value="true">
-                <input type="hidden" name="_honey" value="">
-                <input type="hidden" name="Source" value="Portfolio Service Request">
-
-                <label for="serviceType">Service required *</label>
-                <select id="serviceType" name="Service Required" required>
-                    <option value="">Choose a service</option>
-                    <option>Website Development</option>
-                    <option>Full-Stack Application Development</option>
-                    <option>AI / ML Solution</option>
-                    <option>API & Backend Development</option>
-                    <option>Other / Not Sure Yet</option>
-                </select>
-
-                <div class="service-form-row">
-                    <div>
-                        <label for="clientName">Your name *</label>
-                        <input id="clientName" type="text" name="Name" placeholder="Full name" autocomplete="name" required maxlength="100">
-                    </div>
-                    <div>
-                        <label for="clientEmail">Your email *</label>
-                        <input id="clientEmail" type="email" name="Email" placeholder="you@example.com" autocomplete="email" required maxlength="150">
-                    </div>
-                </div>
-
-                <div class="service-form-row">
-                    <div>
-                        <label for="clientBudget">Estimated budget</label>
-                        <select id="clientBudget" name="Estimated Budget">
-                            <option value="">Select budget (optional)</option>
-                            <option>Below ₹5,000</option>
-                            <option>₹5,000 – ₹15,000</option>
-                            <option>₹15,000 – ₹30,000</option>
-                            <option>₹30,000 – ₹50,000</option>
-                            <option>Above ₹50,000</option>
-                            <option>Let's discuss</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="clientTimeline">Expected timeline</label>
-                        <select id="clientTimeline" name="Expected Timeline">
-                            <option value="">Select timeline (optional)</option>
-                            <option>Within 1 week</option>
-                            <option>1–2 weeks</option>
-                            <option>2–4 weeks</option>
-                            <option>1–2 months</option>
-                            <option>Flexible</option>
-                        </select>
-                    </div>
-                </div>
-
-                <label for="projectDetails">Project details *</label>
-                <textarea id="projectDetails" name="Project Details" rows="5"
-                          placeholder="Describe what you want to build, key features, and any reference links..."
-                          required minlength="20" maxlength="5000"></textarea>
-
-                <button class="btn service-submit-btn" type="submit">
-                    Send Project Request <i class="fas fa-paper-plane"></i>
-                </button>
-                <p class="service-form-note">
-                    Your details will only be used to respond to this enquiry. Please don't include passwords or sensitive information.
-                </p>
-            </form>
-        </section>
     </div>
+</section>
 
-    <!-- Contact Section -->
-    <section class="section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Contact</h2>
-            <div class="contact-content">
-                <div class="contact-links">
-                    <a href="https://www.linkedin.com/in/amit-kumar-79b800256" target="_blank" rel="noopener noreferrer" class="contact-link linkedin-link">
-                        <i class="fab fa-linkedin-in"></i>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://github.com/amitkumar97097" target="_blank" rel="noopener noreferrer" class="contact-link github-link">
-                        <i class="fab fa-github"></i>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="mailto:amitraj02947@gmail.com" class="contact-link email-link">
-                        <i class="fas fa-envelope"></i>
-                        <span>Email</span>
-                    </a>
+
+<!-- SERVICES -->
+<section class="section services-section" id="services">
+    <div class="container">
+
+        <h2 class="section-title">Services I Can Help With</h2>
+
+        <p class="services-intro">
+            Have an idea or a project in mind? Choose a service
+            and send me a project request. I'll review the details
+            and get back to you by email.
+        </p>
+
+        <div class="services-grid">
+
+
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-laptop-code"></i>
                 </div>
+
+                <h3>Website Development</h3>
+
+                <p>
+                    Responsive portfolio, business websites,
+                    landing pages, and modern web interfaces.
+                </p>
+
+                <button
+                    class="btn service-request-btn"
+                    type="button"
+                    data-service="Website Development"
+                >
+                    Request this service
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+            </article>
+
+
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+
+                <h3>Full-Stack Applications</h3>
+
+                <p>
+                    Frontend and backend development, REST APIs,
+                    authentication, and database integration.
+                </p>
+
+                <button
+                    class="btn service-request-btn"
+                    type="button"
+                    data-service="Full-Stack Application Development"
+                >
+                    Request this service
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+            </article>
+
+
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+
+                <h3>AI / ML Solutions</h3>
+
+                <p>
+                    Machine learning prototypes, NLP workflows,
+                    chatbot development, and data-driven solutions.
+                </p>
+
+                <button
+                    class="btn service-request-btn"
+                    type="button"
+                    data-service="AI / ML Solution"
+                >
+                    Request this service
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+            </article>
+
+
+            <article class="service-card">
+
+                <div class="service-icon">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+
+                <h3>API & Backend Development</h3>
+
+                <p>
+                    Backend services, API integration, database
+                    design, and application improvements.
+                </p>
+
+                <button
+                    class="btn service-request-btn"
+                    type="button"
+                    data-service="API & Backend Development"
+                >
+                    Request this service
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+            </article>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- SERVICE REQUEST MODAL -->
+<div
+    class="service-modal"
+    id="serviceModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="service-modal-backdrop"
+        data-close-service-modal
+    ></div>
+
+    <section
+        class="service-modal-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="serviceModalTitle"
+    >
+
+        <button
+            class="service-modal-close"
+            type="button"
+            aria-label="Close form"
+            data-close-service-modal
+        >
+            &times;
+        </button>
+
+        <p class="service-modal-eyebrow">
+            PROJECT ENQUIRY
+        </p>
+
+        <h2 id="serviceModalTitle">
+            Let's Build Something Great
+        </h2>
+
+        <p class="service-modal-description">
+            Tell me about your project. I'll review your
+            requirements and contact you by email.
+        </p>
+
+
+        <form
+            class="service-request-form"
+            action="https://formsubmit.co/amitraj02947@gmail.com"
+            method="POST"
+        >
+
+            <input
+                type="hidden"
+                name="_subject"
+                value="New Service Request - Amit Kumar Portfolio"
+            >
+
+            <input
+                type="hidden"
+                name="_template"
+                value="table"
+            >
+
+            <input
+                type="hidden"
+                name="_captcha"
+                value="true"
+            >
+
+            <input
+                type="hidden"
+                name="_honey"
+                value=""
+            >
+
+            <input
+                type="hidden"
+                name="Source"
+                value="Portfolio Service Request"
+            >
+
+
+            <label for="serviceType">
+                Service Required *
+            </label>
+
+            <select
+                id="serviceType"
+                name="Service Required"
+                required
+            >
+                <option value="">Choose a service</option>
+                <option>Website Development</option>
+                <option>Full-Stack Application Development</option>
+                <option>AI / ML Solution</option>
+                <option>API & Backend Development</option>
+                <option>Other / Not Sure Yet</option>
+            </select>
+
+
+            <div class="service-form-row">
+
+                <div>
+                    <label for="clientName">
+                        Your Name *
+                    </label>
+
+                    <input
+                        id="clientName"
+                        type="text"
+                        name="Name"
+                        placeholder="Enter your name"
+                        autocomplete="name"
+                        maxlength="100"
+                        required
+                    >
+                </div>
+
+
+                <div>
+                    <label for="clientEmail">
+                        Email Address *
+                    </label>
+
+                    <input
+                        id="clientEmail"
+                        type="email"
+                        name="Email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        maxlength="150"
+                        required
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="service-form-row">
+
+                <div>
+                    <label for="clientBudget">
+                        Estimated Budget
+                    </label>
+
+                    <select
+                        id="clientBudget"
+                        name="Estimated Budget"
+                    >
+                        <option value="">
+                            Select budget
+                        </option>
+
+                        <option>Below ₹5,000</option>
+                        <option>₹5,000 – ₹15,000</option>
+                        <option>₹15,000 – ₹30,000</option>
+                        <option>₹30,000 – ₹50,000</option>
+                        <option>Above ₹50,000</option>
+                        <option>Let's discuss</option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <label for="clientTimeline">
+                        Expected Timeline
+                    </label>
+
+                    <select
+                        id="clientTimeline"
+                        name="Expected Timeline"
+                    >
+                        <option value="">
+                            Select timeline
+                        </option>
+
+                        <option>Within 1 week</option>
+                        <option>1–2 weeks</option>
+                        <option>2–4 weeks</option>
+                        <option>1–2 months</option>
+                        <option>Flexible</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+            <label for="projectDetails">
+                Project Details *
+            </label>
+
+            <textarea
+                id="projectDetails"
+                name="Project Details"
+                rows="5"
+                placeholder="Describe your project, required features and reference links..."
+                minlength="20"
+                maxlength="5000"
+                required
+            ></textarea>
+
+
+            <button
+                class="btn service-submit-btn"
+                type="submit"
+            >
+                Send Project Request
+                <i class="fas fa-paper-plane"></i>
+            </button>
+
+            <p class="service-form-note">
+                Your details will only be used to respond
+                to this enquiry. Please do not include
+                passwords or sensitive information.
+            </p>
+
+        </form>
+
+    </section>
+</div>
+
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+    <div class="container">
+
+        <h2 class="section-title">Let's Connect</h2>
+
+        <p class="services-intro">
+            Have an opportunity, project idea, or just want
+            to connect? Feel free to reach out.
+        </p>
+
+        <div class="contact-content">
+
+            <div class="contact-links">
+
+                <a
+                    href="https://www.linkedin.com/in/amit-kumar-79b800256/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-link linkedin-link"
+                >
+                    <i class="fab fa-linkedin-in"></i>
+                    <span>LinkedIn</span>
+                </a>
+
+
+                <a
+                    href="https://github.com/amitkumar97097"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-link github-link"
+                >
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+
+
+                <a
+                    href="mailto:amitraj02947@gmail.com"
+                    class="contact-link email-link"
+                >
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Amit Kumar. All rights reserved.</p>
-        </div>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+
+        <p>
+            &copy; <span id="currentYear">2026</span>
+            Amit Kumar. All rights reserved.
+        </p>
+
+        <p>
+            Designed & Developed with
+            <i class="fas fa-heart"></i>
+            by Amit Kumar
+        </p>
+
+    </div>
+</footer>
+
+
+<!-- BACK TO TOP -->
+<button
+    class="back-to-top"
+    type="button"
+    aria-label="Back to top"
+>
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+
+<!-- JAVASCRIPT -->
+<script src="script.js"></script>
+
 </body>
 </html>
