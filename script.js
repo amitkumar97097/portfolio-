@@ -1,378 +1,517 @@
 
-/* =========================================================
-   AMIT KUMAR — PREMIUM PORTFOLIO JAVASCRIPT
-   Navigation | Animations | Service Modal | Form | UI
-========================================================= */
+/* =====================================================
+   AMIT KUMAR - PREMIUM PORTFOLIO
+   EMAILJS + SERVICE FORM + ANIMATIONS
+===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  "use strict";
+    "use strict";
 
-  const $ = (selector, root = document) =>
-    root.querySelector(selector);
+    // ==========================================
+    // 1. EMAILJS CONFIGURATION
+    // ==========================================
 
-  const $$ = (selector, root = document) =>
-    [...root.querySelectorAll(selector)];
+    const EMAILJS_PUBLIC_KEY = "7Fo_A4YTaopbIbwMr";
+    const EMAILJS_SERVICE_ID = "service_7kw9xdf";
+    const EMAILJS_TEMPLATE_ID = "template_9jiucat";
 
-  const reducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
-
-  const header = $("header");
-
-  // 1. NAVBAR SCROLL EFFECT
-  function updateHeader() {
-    header?.classList.toggle("scrolled", window.scrollY > 35);
-  }
-
-  updateHeader();
-
-  window.addEventListener("scroll", updateHeader, {
-    passive: true
-  });
-
-  // 2. MOBILE MENU
-  const nav = $("nav");
-  const navMenu = $(".nav-links");
-
-  if (nav && navMenu && !$(".portfolio-menu-toggle", nav)) {
-    const toggle = document.createElement("button");
-
-    toggle.type = "button";
-    toggle.className = "portfolio-menu-toggle";
-    toggle.setAttribute("aria-label", "Open navigation");
-    toggle.setAttribute("aria-expanded", "false");
-
-    toggle.innerHTML =
-      '<span></span><span></span><span></span>';
-
-    nav.appendChild(toggle);
-
-    function closeMenu() {
-      navMenu.classList.remove("open", "active");
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", "Open navigation");
+    if (window.emailjs) {
+        emailjs.init({
+            publicKey: EMAILJS_PUBLIC_KEY
+        });
+    } else {
+        console.error("EmailJS SDK not loaded!");
     }
 
-    toggle.addEventListener("click", () => {
-      const open =
-        toggle.getAttribute("aria-expanded") !== "true";
+    // ==========================================
+    // 2. SELECTORS
+    // ==========================================
 
-      navMenu.classList.toggle("open", open);
-      navMenu.classList.toggle("active", open);
+    const header = document.querySelector("header");
+    const nav = document.querySelector("nav");
+    const navLinks = document.querySelector(".nav-links");
 
-      toggle.setAttribute("aria-expanded", String(open));
-      toggle.setAttribute(
-        "aria-label",
-        open ? "Close navigation" : "Open navigation"
-      );
+    const modal = document.getElementById("serviceModal");
+    const serviceForm = document.querySelector(
+        ".service-request-form"
+    );
+
+    const serviceSelect = document.getElementById(
+        "serviceType"
+    );
+
+    const submitButton = document.querySelector(
+        ".service-submit-btn"
+    );
+
+    // ==========================================
+    // 3. MOBILE NAVIGATION
+    // ==========================================
+
+    if (nav && navLinks) {
+        let menuButton = document.querySelector(
+            ".portfolio-menu-toggle"
+        );
+
+        if (!menuButton) {
+            menuButton = document.createElement("button");
+
+            menuButton.type = "button";
+            menuButton.className = "portfolio-menu-toggle";
+            menuButton.setAttribute(
+                "aria-label",
+                "Open navigation"
+            );
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuButton.innerHTML =
+                '<span></span><span></span><span></span>';
+
+            nav.appendChild(menuButton);
+        }
+
+        function closeMenu() {
+            navLinks.classList.remove("open", "active");
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuButton.setAttribute(
+                "aria-label",
+                "Open navigation"
+            );
+        }
+
+        menuButton.addEventListener("click", () => {
+            const isOpen =
+                menuButton.getAttribute("aria-expanded") !== "true";
+
+            navLinks.classList.toggle("open", isOpen);
+            navLinks.classList.toggle("active", isOpen);
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            menuButton.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation" : "Open navigation"
+            );
+        });
+
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("click", event => {
+            if (!nav.contains(event.target)) {
+                closeMenu();
+            }
+        });
+    }
+
+    // ==========================================
+    // 4. NAVBAR SCROLL EFFECT
+    // ==========================================
+
+    function handleScroll() {
+        if (header) {
+            header.classList.toggle(
+                "scrolled",
+                window.scrollY > 40
+            );
+        }
+
+        const topButton = document.querySelector(
+            ".back-to-top"
+        );
+
+        if (topButton) {
+            topButton.classList.toggle(
+                "visible",
+                window.scrollY > 400
+            );
+        }
+    }
+
+    window.addEventListener("scroll", handleScroll, {
+        passive: true
     });
 
-    $$(".nav-links a").forEach(link => {
-      link.addEventListener("click", closeMenu);
+    handleScroll();
+
+    // ==========================================
+    // 5. SMOOTH SCROLLING
+    // ==========================================
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener("click", event => {
+            const targetId = link.getAttribute("href");
+
+            if (!targetId || targetId === "#") return;
+
+            const target = document.querySelector(targetId);
+
+            if (!target) return;
+
+            event.preventDefault();
+
+            const offset =
+                (header?.offsetHeight || 0) + 15;
+
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.scrollY -
+                offset;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
+            });
+        });
     });
+
+    // ==========================================
+    // 6. ACTIVE NAVIGATION
+    // ==========================================
+
+    const sections = document.querySelectorAll(
+        "section[id]"
+    );
+
+    const navigationLinks = document.querySelectorAll(
+        '.nav-links a[href^="#"]'
+    );
+
+    if ("IntersectionObserver" in window) {
+        const sectionObserver = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+
+                    navigationLinks.forEach(link => {
+                        const active =
+                            link.getAttribute("href") ===
+                            `#${entry.target.id}`;
+
+                        link.classList.toggle("active", active);
+                    });
+                });
+            },
+            {
+                rootMargin: "-30% 0px -60% 0px"
+            }
+        );
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+    }
+
+    // ==========================================
+    // 7. SCROLL REVEAL ANIMATIONS
+    // ==========================================
+
+    const revealElements = document.querySelectorAll(`
+        .project-card,
+        .service-card,
+        .experience-item,
+        .leadership-item,
+        .about-content,
+        .skills-content,
+        .section-title
+    `);
+
+    if (
+        "IntersectionObserver" in window &&
+        !window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches
+    ) {
+        const revealObserver = new IntersectionObserver(
+            (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.1
+            }
+        );
+
+        revealElements.forEach(element => {
+            element.classList.add("reveal-on-scroll");
+            revealObserver.observe(element);
+        });
+    } else {
+        revealElements.forEach(element => {
+            element.classList.add("is-visible");
+        });
+    }
+
+    // ==========================================
+    // 8. SERVICE MODAL OPEN
+    // ==========================================
+
+    function openServiceModal(serviceName = "") {
+        if (!modal) {
+            console.error(
+                "Service modal #serviceModal not found!"
+            );
+            return;
+        }
+
+        if (serviceSelect && serviceName) {
+            serviceSelect.value = serviceName;
+        }
+
+        modal.classList.add("active", "is-open");
+
+        modal.setAttribute("aria-hidden", "false");
+
+        document.body.classList.add(
+            "modal-open",
+            "service-modal-open"
+        );
+
+        const firstInput = modal.querySelector(
+            'input:not([type="hidden"]), select, textarea'
+        );
+
+        setTimeout(() => {
+            firstInput?.focus();
+        }, 150);
+    }
+
+    // ==========================================
+    // 9. SERVICE MODAL CLOSE
+    // ==========================================
+
+    function closeServiceModal() {
+        if (!modal) return;
+
+        modal.classList.remove("active", "is-open");
+
+        modal.setAttribute("aria-hidden", "true");
+
+        document.body.classList.remove(
+            "modal-open",
+            "service-modal-open"
+        );
+    }
 
     document.addEventListener("click", event => {
-      if (!nav.contains(event.target)) {
-        closeMenu();
-      }
+        const requestButton = event.target.closest(
+            ".service-request-btn, [data-service]"
+        );
+
+        if (requestButton) {
+            event.preventDefault();
+
+            openServiceModal(
+                requestButton.dataset.service || ""
+            );
+
+            return;
+        }
+
+        const closeButton = event.target.closest(
+            "[data-close-service-modal], .service-modal-close"
+        );
+
+        if (closeButton) {
+            event.preventDefault();
+            closeServiceModal();
+            return;
+        }
+
+        if (modal && event.target === modal) {
+            closeServiceModal();
+        }
     });
-  }
 
-  // 3. SMOOTH SCROLLING
-  $$('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", event => {
-      const href = anchor.getAttribute("href");
-
-      if (!href || href === "#") return;
-
-      const target = $(href);
-
-      if (!target) return;
-
-      event.preventDefault();
-
-      const offset = (header?.offsetHeight || 0) + 12;
-
-      const top =
-        target.getBoundingClientRect().top +
-        window.scrollY -
-        offset;
-
-      window.scrollTo({
-        top,
-        behavior: reducedMotion ? "auto" : "smooth"
-      });
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+            closeServiceModal();
+        }
     });
-  });
 
-  // 4. ACTIVE NAVIGATION
-  const navAnchors = $$('.nav-links a[href^="#"]');
+    // ==========================================
+    // 10. EMAILJS SERVICE REQUEST FORM
+    // ==========================================
 
-  const observedSections = navAnchors
-    .map(link => $(link.getAttribute("href")))
-    .filter(Boolean);
+    if (serviceForm) {
+        serviceForm.addEventListener(
+            "submit",
+            async event => {
+                event.preventDefault();
 
-  if (
-    "IntersectionObserver" in window &&
-    observedSections.length
-  ) {
-    const navObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
+                if (!serviceForm.checkValidity()) {
+                    serviceForm.reportValidity();
+                    return;
+                }
 
-        navAnchors.forEach(link => {
-          const active =
-            link.getAttribute("href") ===
-            `#${entry.target.id}`;
+                if (!window.emailjs) {
+                    alert(
+                        "Email service is not loaded. Please refresh and try again."
+                    );
+                    return;
+                }
 
-          link.classList.toggle("active", active);
+                const originalButtonText =
+                    submitButton?.innerHTML || "Send Request";
 
-          if (active) {
-            link.setAttribute("aria-current", "location");
-          } else {
-            link.removeAttribute("aria-current");
-          }
+                if (submitButton) {
+                    submitButton.disabled = true;
+
+                    submitButton.innerHTML =
+                        '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                }
+
+                const formData = {
+                    name: serviceForm.querySelector(
+                        '[name="Name"]'
+                    ).value.trim(),
+
+                    email: serviceForm.querySelector(
+                        '[name="Email"]'
+                    ).value.trim(),
+
+                    service: serviceForm.querySelector(
+                        '[name="Service Required"]'
+                    ).value,
+
+                    budget: serviceForm.querySelector(
+                        '[name="Estimated Budget"]'
+                    ).value || "Not specified",
+
+                    timeline: serviceForm.querySelector(
+                        '[name="Expected Timeline"]'
+                    ).value || "Not specified",
+
+                    project_details: serviceForm.querySelector(
+                        '[name="Project Details"]'
+                    ).value.trim()
+                };
+
+                try {
+                    const response = await emailjs.send(
+                        EMAILJS_SERVICE_ID,
+                        EMAILJS_TEMPLATE_ID,
+                        formData
+                    );
+
+                    console.log(
+                        "Email successfully sent:",
+                        response.status,
+                        response.text
+                    );
+
+                    alert(
+                        "Thank you! Your project request has been sent successfully. I will contact you soon."
+                    );
+
+                    serviceForm.reset();
+
+                    closeServiceModal();
+
+                } catch (error) {
+                    console.error(
+                        "EmailJS sending error:",
+                        error
+                    );
+
+                    alert(
+                        "Unable to send your request right now. Please email me directly at amitraj02947@gmail.com."
+                    );
+
+                } finally {
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.innerHTML =
+                            originalButtonText;
+                    }
+                }
+            }
+        );
+    }
+
+    // ==========================================
+    // 11. PROFILE IMAGE FALLBACK
+    // ==========================================
+
+    const profileImage = document.getElementById(
+        "profileImage"
+    );
+
+    if (profileImage) {
+        profileImage.addEventListener("error", () => {
+            profileImage.style.display = "none";
+
+            const fallback = document.getElementById(
+                "profileFallback"
+            );
+
+            if (fallback) {
+                fallback.style.display = "flex";
+            }
         });
-      });
-    }, {
-      rootMargin: "-25% 0px -65% 0px",
-      threshold: 0
-    });
+    }
 
-    observedSections.forEach(section => {
-      navObserver.observe(section);
-    });
-  }
+    // ==========================================
+    // 12. BACK TO TOP
+    // ==========================================
 
-  // 5. SCROLL REVEAL ANIMATIONS
-  const revealItems = $$(`
-    .section-title,
-    .about-content,
-    .experience-column,
-    .project-card,
-    .skills-content p,
-    .leadership-item,
-    .service-card,
-    .contact-content
-  `);
+    const backToTop = document.querySelector(
+        ".back-to-top"
+    );
 
-  if ("IntersectionObserver" in window && !reducedMotion) {
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
+    if (backToTop) {
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
         });
-      },
-      {
-        threshold: 0.08,
-        rootMargin: "0px 0px -20px 0px"
-      }
-    );
+    }
 
-    revealItems.forEach(element => {
-      element.classList.add("reveal-on-scroll");
-      revealObserver.observe(element);
+    // ==========================================
+    // 13. CURRENT YEAR
+    // ==========================================
+
+    document.querySelectorAll(
+        "#currentYear, .current-year, [data-current-year]"
+    ).forEach(element => {
+        element.textContent = new Date().getFullYear();
     });
-  } else {
-    revealItems.forEach(element => {
-      element.classList.add("is-visible");
+
+    // ==========================================
+    // 14. IMAGE LOADING
+    // ==========================================
+
+    document.querySelectorAll("img").forEach(image => {
+        image.addEventListener("error", () => {
+            image.classList.add("image-error");
+        });
     });
-  }
 
-  // 6. SERVICE REQUEST MODAL
-  const modal = $("#serviceModal");
-  const serviceSelect = $("#serviceType");
+    // ==========================================
+    // 15. INITIALIZATION
+    // ==========================================
 
-  let lastFocused = null;
+    document.documentElement.classList.add("js-loaded");
 
-  function openModal(service = "") {
-    if (!modal) {
-      console.error(
-        "Service modal #serviceModal is missing from index.html"
-      );
-      return;
-    }
-
-    lastFocused = document.activeElement;
-
-    if (serviceSelect && service) {
-      serviceSelect.value = service;
-    }
-
-    modal.classList.add("is-open", "active");
-    modal.setAttribute("aria-hidden", "false");
-
-    document.body.classList.add(
-      "service-modal-open",
-      "modal-open"
+    console.log(
+        "Amit Kumar Premium Portfolio initialized successfully!"
     );
 
-    const firstInput = $(
-      'input:not([type="hidden"]), select, textarea',
-      modal
-    );
-
-    window.setTimeout(() => {
-      firstInput?.focus();
-    }, 100);
-  }
-
-  function closeModal() {
-    if (!modal) return;
-
-    modal.classList.remove("is-open", "active");
-    modal.setAttribute("aria-hidden", "true");
-
-    document.body.classList.remove(
-      "service-modal-open",
-      "modal-open"
-    );
-
-    if (lastFocused?.focus) {
-      lastFocused.focus();
-    }
-  }
-
-  // Event delegation: all service request buttons work.
-  document.addEventListener("click", event => {
-    const requestButton = event.target.closest(
-      ".service-request-btn, [data-service]"
-    );
-
-    if (requestButton) {
-      event.preventDefault();
-
-      openModal(
-        requestButton.getAttribute("data-service") || ""
-      );
-
-      return;
-    }
-
-    const closeButton = event.target.closest(
-      "[data-close-service-modal], .service-modal-close"
-    );
-
-    if (closeButton) {
-      event.preventDefault();
-      closeModal();
-      return;
-    }
-
-    // Close when clicking the modal backdrop.
-    if (modal && event.target === modal) {
-      closeModal();
-    }
-  });
-
-  // Close modal with Escape key.
-  document.addEventListener("keydown", event => {
-    if (
-      event.key === "Escape" &&
-      modal &&
-      (
-        modal.classList.contains("is-open") ||
-        modal.classList.contains("active")
-      )
-    ) {
-      closeModal();
-    }
-  });
-
-  // 7. SERVICE FORM VALIDATION
-  const requestForm = $(".service-request-form");
-
-  if (requestForm) {
-    requestForm.addEventListener("submit", event => {
-      if (!requestForm.checkValidity()) {
-        event.preventDefault();
-        requestForm.reportValidity();
-        return;
-      }
-
-      const submitButton = $(
-        'button[type="submit"]',
-        requestForm
-      );
-
-      if (submitButton) {
-        submitButton.disabled = true;
-
-        submitButton.innerHTML =
-          'Sending request… <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>';
-      }
-    });
-  }
-
-  // 8. PROFILE IMAGE FALLBACK
-  const profile = $("#profileImage");
-
-  if (profile) {
-    profile.addEventListener("error", () => {
-      const fallback = $("#profileFallback");
-
-      if (fallback) {
-        fallback.style.display = "flex";
-      }
-
-      profile.style.display = "none";
-    }, { once: true });
-  }
-
-  // 9. BACK TO TOP BUTTON
-  let topButton = $(
-    ".back-to-top, .floating-action-btn"
-  );
-
-  if (!topButton) {
-    topButton = document.createElement("button");
-
-    topButton.type = "button";
-    topButton.className = "portfolio-back-to-top";
-    topButton.setAttribute("aria-label", "Back to top");
-
-    topButton.innerHTML =
-      '<i class="fas fa-arrow-up"></i>';
-
-    document.body.appendChild(topButton);
-  }
-
-  function updateTopButton() {
-    topButton.classList.toggle(
-      "visible",
-      window.scrollY > 450
-    );
-  }
-
-  updateTopButton();
-
-  window.addEventListener("scroll", updateTopButton, {
-    passive: true
-  });
-
-  topButton.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: reducedMotion ? "auto" : "smooth"
-    });
-  });
-
-  // 10. AUTOMATIC FOOTER YEAR
-  $$(
-    "[data-current-year], #currentYear, .current-year"
-  ).forEach(element => {
-    element.textContent = String(
-      new Date().getFullYear()
-    );
-  });
-
-  // 11. INITIALIZE PORTFOLIO
-  document.documentElement.classList.add("js-loaded");
-
-  console.info(
-    "Portfolio ready — service enquiry modal enabled."
-  );
 });
