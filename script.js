@@ -1,85 +1,58 @@
+/* =========================================================
+   AMIT KUMAR — PORTFOLIO INTERACTIONS
+   ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
   "use strict";
 
-  // ==========================================
-  // 1. ELEMENT SELECTORS
-  // ==========================================
-
-  const navbar = document.querySelector(".navbar");
-  const menuToggle = document.querySelector(".menu-toggle");
+  // Mobile navigation
+  const nav = document.querySelector("nav");
   const navLinks = document.querySelectorAll(".nav-links a");
-  const backToTop = document.querySelector(".back-to-top");
 
-  // ==========================================
-  // 2. MOBILE NAVIGATION
-  // ==========================================
+  const menuButton = document.querySelector(
+    ".menu-toggle, .hamburger, .menu-btn"
+  );
 
-  if (menuToggle && navbar) {
-    menuToggle.addEventListener("click", () => {
-      navbar.classList.toggle("active");
-
-      const isOpen = navbar.classList.contains("active");
-      menuToggle.setAttribute("aria-expanded", isOpen);
-      menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation" : "Open navigation"
+  if (menuButton && nav) {
+    menuButton.addEventListener("click", () => {
+      nav.classList.toggle("active");
+      menuButton.setAttribute(
+        "aria-expanded",
+        nav.classList.contains("active")
       );
-    });
-
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        navbar.classList.remove("active");
-        menuToggle.setAttribute("aria-expanded", "false");
-      });
-    });
-
-    document.addEventListener("click", (event) => {
-      if (
-        navbar.classList.contains("active") &&
-        !navbar.contains(event.target)
-      ) {
-        navbar.classList.remove("active");
-        menuToggle.setAttribute("aria-expanded", "false");
-      }
     });
   }
 
-  // ==========================================
-  // 3. NAVBAR SCROLL EFFECT
-  // ==========================================
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      nav?.classList.remove("active");
+    });
+  });
 
-  const handleNavbarScroll = () => {
-    if (!navbar) return;
+  // Navbar scroll effect
+  const header = document.querySelector("header");
 
-    navbar.classList.toggle("scrolled", window.scrollY > 40);
-
-    if (backToTop) {
-      backToTop.classList.toggle("visible", window.scrollY > 400);
+  function handleScroll() {
+    if (header) {
+      header.classList.toggle("scrolled", window.scrollY > 40);
     }
-  };
+  }
 
-  window.addEventListener("scroll", handleNavbarScroll, {
+  window.addEventListener("scroll", handleScroll, {
     passive: true
   });
 
-  handleNavbarScroll();
+  handleScroll();
 
-  // ==========================================
-  // 4. SMOOTH SCROLLING
-  // ==========================================
-
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener("click", (event) => {
-      const targetId = link.getAttribute("href");
-
-      if (!targetId || targetId === "#") return;
-
-      const target = document.querySelector(targetId);
+  // Smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", event => {
+      const target = document.querySelector(
+        link.getAttribute("href")
+      );
 
       if (target) {
         event.preventDefault();
-
         target.scrollIntoView({
           behavior: "smooth",
           block: "start"
@@ -88,127 +61,182 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ==========================================
-  // 5. ACTIVE NAVIGATION ON SCROLL
-  // ==========================================
-
+  // Active navigation
   const sections = document.querySelectorAll("section[id]");
 
   if ("IntersectionObserver" in window) {
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
 
-          const currentId = entry.target.id;
-
-          navLinks.forEach((link) => {
-            const isActive =
-              link.getAttribute("href") === `#${currentId}`;
-
-            link.classList.toggle("active", isActive);
-          });
+        navLinks.forEach(link => {
+          link.classList.toggle(
+            "active",
+            link.getAttribute("href") === `#${entry.target.id}`
+          );
         });
-      },
-      {
-        rootMargin: "-35% 0px -55% 0px"
-      }
-    );
+      });
+    }, {
+      rootMargin: "-35% 0px -55% 0px"
+    });
 
-    sections.forEach((section) => sectionObserver.observe(section));
+    sections.forEach(section => {
+      sectionObserver.observe(section);
+    });
   }
 
-  // ==========================================
-  // 6. SCROLL REVEAL ANIMATIONS
-  // ==========================================
-
+  // Scroll reveal animation
   const revealElements = document.querySelectorAll(
-    ".reveal, .project-card, .skill-card, .experience-card, .education-card"
+    ".project-card, .service-card, .experience-item, " +
+    ".leadership-item, .about-content, .skills-content"
   );
 
   if ("IntersectionObserver" in window) {
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
-        entries.forEach((entry) => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
             observer.unobserve(entry.target);
           }
         });
       },
-      {
-        threshold: 0.12,
-        rootMargin: "0px 0px -40px 0px"
-      }
+      { threshold: 0.12 }
     );
 
-    revealElements.forEach((element) => {
+    revealElements.forEach(element => {
       element.classList.add("reveal");
       revealObserver.observe(element);
     });
   } else {
-    revealElements.forEach((element) => {
+    revealElements.forEach(element => {
       element.classList.add("visible");
     });
   }
 
-  // ==========================================
-  // 7. TYPING EFFECT
-  // ==========================================
-
+  // Typing effect
   const typingElement = document.querySelector(".typing-text");
 
   if (typingElement) {
     const roles = [
       "Software Developer",
       "Full Stack Developer",
-      "AI & ML Enthusiast",
+      "AI/ML Enthusiast",
       "Problem Solver"
     ];
 
     let roleIndex = 0;
-    let characterIndex = 0;
+    let charIndex = 0;
     let deleting = false;
 
-    const typeEffect = () => {
+    function typeEffect() {
       const currentRole = roles[roleIndex];
 
+      typingElement.textContent = currentRole.substring(
+        0,
+        charIndex
+      );
+
       if (!deleting) {
-        typingElement.textContent = currentRole.slice(
-          0,
-          characterIndex + 1
-        );
+        charIndex++;
 
-        characterIndex++;
-
-        if (characterIndex === currentRole.length) {
+        if (charIndex > currentRole.length) {
           deleting = true;
-          setTimeout(typeEffect, 1300);
+          setTimeout(typeEffect, 1200);
           return;
         }
       } else {
-        typingElement.textContent = currentRole.slice(
-          0,
-          characterIndex - 1
-        );
+        charIndex--;
 
-        characterIndex--;
-
-        if (characterIndex === 0) {
+        if (charIndex < 0) {
+          charIndex = 0;
           deleting = false;
           roleIndex = (roleIndex + 1) % roles.length;
         }
       }
 
-      setTimeout(typeEffect, deleting ? 45 : 85);
-    };
+      setTimeout(typeEffect, deleting ? 45 : 90);
+    }
 
     typeEffect();
   }
 
-  // ==========================================
-  // 8. BACK TO TOP BUTTON
-  // ==========================================
+  // Service request modal
+  const modal = document.getElementById("serviceModal");
+
+  const serviceButtons = document.querySelectorAll(
+    ".service-request-btn, [data-service]"
+  );
+
+  const closeButtons = document.querySelectorAll(
+    "[data-close-service-modal]"
+  );
+
+  const serviceSelect = document.getElementById("serviceType");
+
+  function openModal(serviceName = "") {
+    if (!modal) return;
+
+    modal.classList.add("active");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+
+    if (serviceSelect && serviceName) {
+      serviceSelect.value = serviceName;
+    }
+
+    const firstInput = modal.querySelector(
+      "input, select, textarea"
+    );
+
+    setTimeout(() => firstInput?.focus(), 150);
+  }
+
+  function closeModal() {
+    if (!modal) return;
+
+    modal.classList.remove("active");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  }
+
+  serviceButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      openModal(button.dataset.service || "");
+    });
+  });
+
+  closeButtons.forEach(button => {
+    button.addEventListener("click", closeModal);
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  });
+
+  // Service form validation
+  const serviceForm = document.querySelector(
+    ".service-request-form"
+  );
+
+  if (serviceForm) {
+    serviceForm.addEventListener("submit", event => {
+      if (!serviceForm.checkValidity()) {
+        event.preventDefault();
+        serviceForm.reportValidity();
+      }
+    });
+  }
+
+  // Contact links and current year
+  document.querySelectorAll(".current-year").forEach(element => {
+    element.textContent = new Date().getFullYear();
+  });
+
+  // Back to top (if button exists)
+  const backToTop = document.querySelector(".back-to-top");
 
   if (backToTop) {
     backToTop.addEventListener("click", () => {
@@ -219,159 +247,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ==========================================
-  // 9. SERVICE REQUEST MODAL
-  // ==========================================
-
-  const serviceModal = document.querySelector(
-    "#serviceModal, .service-modal"
-  );
-
-  const openModalButtons = document.querySelectorAll(
-    ".open-service-modal, [data-open-modal]"
-  );
-
-  const closeModalButtons = document.querySelectorAll(
-    ".close-modal, [data-close-modal]"
-  );
-
-  const openModal = () => {
-    if (!serviceModal) return;
-
-    serviceModal.classList.add("active");
-    serviceModal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("modal-open");
-
-    const firstInput = serviceModal.querySelector(
-      "input, select, textarea"
-    );
-
-    if (firstInput) {
-      setTimeout(() => firstInput.focus(), 150);
-    }
-  };
-
-  const closeModal = () => {
-    if (!serviceModal) return;
-
-    serviceModal.classList.remove("active");
-    serviceModal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("modal-open");
-  };
-
-  openModalButtons.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.preventDefault();
-      openModal();
-    });
-  });
-
-  closeModalButtons.forEach((button) => {
-    button.addEventListener("click", closeModal);
-  });
-
-  if (serviceModal) {
-    serviceModal.addEventListener("click", (event) => {
-      if (event.target === serviceModal) {
-        closeModal();
-      }
-    });
-  }
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeModal();
-    }
-  });
-
-  // ==========================================
-  // 10. SERVICE SELECTION
-  // ==========================================
-
-  const serviceSelect = document.querySelector(
-    "#service, #serviceType, [name='service']"
-  );
-
-  document.querySelectorAll("[data-service]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const selectedService = button.dataset.service;
-
-      if (serviceSelect && selectedService) {
-        serviceSelect.value = selectedService;
-      }
-
-      openModal();
-    });
-  });
-
-  // ==========================================
-  // 11. CONTACT FORM VALIDATION
-  // ==========================================
-
-  const forms = document.querySelectorAll(
-    ".contact-form, .service-form, #contactForm, #serviceForm"
-  );
-
-  forms.forEach((form) => {
-    form.addEventListener("submit", (event) => {
-      const emailInput = form.querySelector('input[type="email"]');
-      const nameInput = form.querySelector(
-        'input[name="name"], input[name="fullName"]'
-      );
-
-      if (nameInput && !nameInput.value.trim()) {
-        event.preventDefault();
-        alert("Please enter your name.");
-        nameInput.focus();
-        return;
-      }
-
-      if (
-        emailInput &&
-        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())
-      ) {
-        event.preventDefault();
-        alert("Please enter a valid email address.");
-        emailInput.focus();
-      }
-    });
-  });
-
-  // ==========================================
-  // 12. CURRENT YEAR
-  // ==========================================
-
-  document.querySelectorAll(".current-year").forEach((element) => {
-    element.textContent = new Date().getFullYear();
-  });
-
-  // ==========================================
-  // 13. IMAGE LAZY LOADING
-  // ==========================================
-
-  document.querySelectorAll("img").forEach((image) => {
-    if (!image.hasAttribute("loading")) {
-      image.setAttribute("loading", "lazy");
-    }
-
-    image.addEventListener("error", () => {
-      image.classList.add("image-error");
-    });
-  });
-
-  // ==========================================
-  // 14. BUTTON CLICK FEEDBACK
-  // ==========================================
-
-  document.querySelectorAll(".btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      button.classList.add("clicked");
-
-      setTimeout(() => {
-        button.classList.remove("clicked");
-      }, 250);
-    });
-  });
-
-  console.log("Portfolio initialized successfully 🚀");
+  console.log("Amit Kumar Portfolio Loaded Successfully 🚀");
 });
