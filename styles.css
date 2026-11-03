@@ -3122,3 +3122,159 @@ footer { background: #101827; color: #dbe5f1; }
   }
   .reveal-on-scroll { opacity: 1; transform: none; }
 }
+
+/* =========================================================
+   FINAL VISIBILITY + COLOR FIX
+   Keeps the portfolio clean, premium and easy to read.
+   ========================================================= */
+:root {
+  --primary: #2563eb;
+  --primary-light: #60a5fa;
+  --primary-dark: #1d4ed8;
+  --secondary: #0faaa0;
+  --dark: #17243a;
+  --dark-alt: #33445f;
+  --gray: #52647d;
+  --surface: #ffffff;
+  --surface-soft: #f4f7fc;
+  --line: rgba(100, 116, 139, .18);
+}
+
+html { color-scheme: light; }
+body {
+  color: #26364d !important;
+  background: #f3f6fc !important;
+  opacity: 1 !important;
+}
+body::before {
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(37,99,235,.09), transparent 34%),
+    radial-gradient(ellipse at 88% 20%, rgba(15,170,160,.08), transparent 32%),
+    linear-gradient(135deg, #f8faff, #eef3fb 55%, #f8fbff) !important;
+}
+
+header, .navbar {
+  background: rgba(255,255,255,.96) !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  box-shadow: 0 8px 28px rgba(15,23,42,.08) !important;
+}
+.logo, .logo a, header .logo, header .logo a {
+  color: #17243a !important;
+  opacity: 1 !important;
+}
+.nav-links a {
+  color: #52647d !important;
+  opacity: 1 !important;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: #0891b2 !important;
+}
+
+.section, .section:nth-of-type(even) {
+  background: rgba(246,249,255,.94) !important;
+  color: #26364d !important;
+}
+.section-title,
+#about .section-title,
+#education .section-title,
+#experience .section-title,
+#skills .section-title,
+#projects .section-title,
+#services .section-title,
+#leadership .section-title,
+#contact .section-title {
+  color: #17243a !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+.about-content,
+.skills-content,
+.experience-column,
+.leadership-item,
+.contact-content,
+.project-card,
+.service-card {
+  color: #26364d !important;
+  background: #fff !important;
+  border-color: #e1e8f2 !important;
+  opacity: 1 !important;
+}
+.about-content p,
+#about .about-content p,
+.skills-content p,
+.experience-column p,
+.experience-item p,
+.project-info p,
+.project-card p,
+.leadership-item p,
+.contact-content p,
+.service-card p {
+  color: #52647d !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+.about-content strong,
+.experience-column strong,
+.project-info strong,
+.leadership-item strong {
+  color: #17243a !important;
+}
+
+.hero h1, .hero h2, .hero p,
+.hero-description, .hero-kicker,
+.hero-proof, .hero-proof span,
+.hero-proof strong {
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+.hero h1 { color: #17243a !important; }
+.hero h2 { color: #40536d !important; }
+.hero-description { color: #52647d !important; }
+.hero-proof span { color: #52647d !important; }
+.hero-proof strong { color: #17243a !important; }
+
+/* Reveal effects must never leave content invisible. */
+.reveal,
+.reveal.visible,
+.reveal-on-scroll,
+.reveal-on-scroll.is-visible,
+.js-loaded .reveal-on-scroll,
+.js-loaded .reveal-on-scroll.is-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+/* Keep education cards readable if they use the dark timeline design. */
+#education .education-card,
+.education-section .education-card {
+  background: linear-gradient(145deg, #172b49, #10213a) !important;
+}
+#education .education-card h3,
+#education .education-item h3 { color: #f1f6ff !important; }
+#education .education-card h4,
+#education .education-item h4 { color: #7dd3fc !important; }
+#education .education-card p,
+#education .education-item p { color: #c4d2e5 !important; }
+
+input, textarea, select {
+  color: #26364d !important;
+  background: #fff !important;
+}
+input::placeholder, textarea::placeholder { color: #8291a7 !important; }
+
+@media (max-width: 768px) {
+  header, .navbar { background: rgba(255,255,255,.98) !important; }
+  .nav-links a { color: #344761 !important; }
+  .section { padding-top: 58px; padding-bottom: 58px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
