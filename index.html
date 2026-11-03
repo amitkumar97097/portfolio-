@@ -19,6 +19,7 @@
     <a href="#experience">Experience</a>
     <a href="#skills">Technical Skills</a>
     <a href="#projects">Projects</a>
+                    <a href="#services">Services</a>
     <a href="#leadership">Leadership</a>
     <a href="#contact">Contact</a>
 </div>
@@ -31,12 +32,14 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Hi, I'm Amit Kumar</h1>
+                    <p class="hero-kicker"><span class="kicker-line"></span> SOFTWARE ENGINEER · AI ENTHUSIAST</p>
+                    <h1>Hi, I'm <span class="hero-name-accent">Amit Kumar</span></h1>
                     <h2>Software Developer | AI/ML Enthusiast</h2>
-                    <p class="hero-description">M.Tech student at IIIT Guwahati, specializing in Artificial Intelligence. I build full-stack applications and intelligent systems using modern web technologies and machine learning.</p>
+                    <p class="hero-description">I’m an M.Tech CSE (Artificial Intelligence) student at IIIT Guwahati, building thoughtful full-stack products and practical AI solutions. I enjoy turning complex problems into clean, reliable experiences.</p>
+                    <div class="hero-proof"><span><strong>350+</strong> DSA problems</span><span><strong>0.89</strong> GNN F1-score</span><span><strong>92%</strong> NLP accuracy</span></div>
                     <div class="availability-badge"><span class="availability-dot"></span>Open to SDE &amp; AI/ML Opportunities</div>
                     <div class="hero-buttons">
-                        <a href="#contact" class="btn">Schedule a call <span>👍</span></a>
+                        <a href="#contact" class="btn">Let’s work together <i class="fas fa-arrow-up-right-from-square"></i></a>
                         <a href="https://drive.google.com/file/d/1cYmqYLzdBwhyXwq-drMe0lQJdcBK55Y7/view" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Download CV</a>
                     </div>
                     <div class="social-links">
@@ -121,7 +124,7 @@
                     <div class="experience-item">
                         <h3>B.Tech in Computer Science and Engineering</h3>
                         <h4>North Eastern Regional Institute of Science and Technology (NERIST) | 2022–2026</h4>
-                        <p>CGPA: 7.6/10</p>
+                        <p>CGPA: 7.5/10</p>
                     </div>
                     <div class="experience-item">
                         <h3>Senior Secondary (Class XII)</h3>
@@ -408,17 +411,151 @@
     </div>
 </section>
 
+
+    <!-- Services Section -->
+    <section class="section services-section" id="services">
+        <div class="container">
+            <h2 class="section-title">Services I Can Help With</h2>
+            <p class="services-intro">
+                Have an idea or a project in mind? Choose a service and send me a project request.
+                I'll review the details and get back to you by email.
+            </p>
+
+            <div class="services-grid">
+                <article class="service-card">
+                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Website Development</h3>
+                    <p>Responsive portfolio, business websites, landing pages, and modern web interfaces.</p>
+                    <button class="btn service-request-btn" type="button" data-service="Website Development">
+                        Request this service <i class="fas fa-arrow-right"></i>
+                    </button>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon"><i class="fas fa-layer-group"></i></div>
+                    <h3>Full-Stack Applications</h3>
+                    <p>Frontend and backend development, REST APIs, authentication, and database integration.</p>
+                    <button class="btn service-request-btn" type="button" data-service="Full-Stack Application Development">
+                        Request this service <i class="fas fa-arrow-right"></i>
+                    </button>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon"><i class="fas fa-brain"></i></div>
+                    <h3>AI / ML Solutions</h3>
+                    <p>Machine learning prototypes, NLP workflows, chatbot development, and data-driven solutions.</p>
+                    <button class="btn service-request-btn" type="button" data-service="AI / ML Solution">
+                        Request this service <i class="fas fa-arrow-right"></i>
+                    </button>
+                </article>
+
+                <article class="service-card">
+                    <div class="service-icon"><i class="fas fa-code-branch"></i></div>
+                    <h3>API & Backend Development</h3>
+                    <p>Backend services, API integration, database design, and application improvements.</p>
+                    <button class="btn service-request-btn" type="button" data-service="API & Backend Development">
+                        Request this service <i class="fas fa-arrow-right"></i>
+                    </button>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Request Modal -->
+    <div class="service-modal" id="serviceModal" aria-hidden="true">
+        <div class="service-modal-backdrop" data-close-service-modal></div>
+        <section class="service-modal-panel" role="dialog" aria-modal="true"
+                 aria-labelledby="serviceModalTitle">
+            <button class="service-modal-close" type="button" aria-label="Close form"
+                    data-close-service-modal>&times;</button>
+            <p class="service-modal-eyebrow">PROJECT ENQUIRY</p>
+            <h2 id="serviceModalTitle">Request a Service</h2>
+            <p class="service-modal-description">
+                Share a few details about your requirement. Your request will be sent to my email.
+            </p>
+
+            <form class="service-request-form"
+                  action="https://formsubmit.co/amitraj02947@gmail.com"
+                  method="POST">
+                <input type="hidden" name="_subject" value="New Service Request — Amit Kumar Portfolio">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="true">
+                <input type="hidden" name="_honey" value="">
+                <input type="hidden" name="Source" value="Portfolio Service Request">
+
+                <label for="serviceType">Service required *</label>
+                <select id="serviceType" name="Service Required" required>
+                    <option value="">Choose a service</option>
+                    <option>Website Development</option>
+                    <option>Full-Stack Application Development</option>
+                    <option>AI / ML Solution</option>
+                    <option>API & Backend Development</option>
+                    <option>Other / Not Sure Yet</option>
+                </select>
+
+                <div class="service-form-row">
+                    <div>
+                        <label for="clientName">Your name *</label>
+                        <input id="clientName" type="text" name="Name" placeholder="Full name" autocomplete="name" required maxlength="100">
+                    </div>
+                    <div>
+                        <label for="clientEmail">Your email *</label>
+                        <input id="clientEmail" type="email" name="Email" placeholder="you@example.com" autocomplete="email" required maxlength="150">
+                    </div>
+                </div>
+
+                <div class="service-form-row">
+                    <div>
+                        <label for="clientBudget">Estimated budget</label>
+                        <select id="clientBudget" name="Estimated Budget">
+                            <option value="">Select budget (optional)</option>
+                            <option>Below ₹5,000</option>
+                            <option>₹5,000 – ₹15,000</option>
+                            <option>₹15,000 – ₹30,000</option>
+                            <option>₹30,000 – ₹50,000</option>
+                            <option>Above ₹50,000</option>
+                            <option>Let's discuss</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="clientTimeline">Expected timeline</label>
+                        <select id="clientTimeline" name="Expected Timeline">
+                            <option value="">Select timeline (optional)</option>
+                            <option>Within 1 week</option>
+                            <option>1–2 weeks</option>
+                            <option>2–4 weeks</option>
+                            <option>1–2 months</option>
+                            <option>Flexible</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label for="projectDetails">Project details *</label>
+                <textarea id="projectDetails" name="Project Details" rows="5"
+                          placeholder="Describe what you want to build, key features, and any reference links..."
+                          required minlength="20" maxlength="5000"></textarea>
+
+                <button class="btn service-submit-btn" type="submit">
+                    Send Project Request <i class="fas fa-paper-plane"></i>
+                </button>
+                <p class="service-form-note">
+                    Your details will only be used to respond to this enquiry. Please don't include passwords or sensitive information.
+                </p>
+            </form>
+        </section>
+    </div>
+
     <!-- Contact Section -->
     <section class="section" id="contact">
         <div class="container">
             <h2 class="section-title">Contact</h2>
             <div class="contact-content">
                 <div class="contact-links">
-                    <a href="https://www.linkedin.com/in/amit-kumar-79b800256" target="_blank" class="contact-link linkedin-link">
+                    <a href="https://www.linkedin.com/in/amit-kumar-79b800256" target="_blank" rel="noopener noreferrer" class="contact-link linkedin-link">
                         <i class="fab fa-linkedin-in"></i>
                         <span>LinkedIn</span>
                     </a>
-                    <a href="https://github.com/amitkumar97097" target="_blank" class="contact-link github-link">
+                    <a href="https://github.com/amitkumar97097" target="_blank" rel="noopener noreferrer" class="contact-link github-link">
                         <i class="fab fa-github"></i>
                         <span>GitHub</span>
                     </a>
