@@ -1,251 +1,378 @@
+
 /* =========================================================
-   AMIT KUMAR — PORTFOLIO INTERACTIONS
-   ========================================================= */
+   AMIT KUMAR — PREMIUM PORTFOLIO JAVASCRIPT
+   Navigation | Animations | Service Modal | Form | UI
+========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
   "use strict";
 
-  // Mobile navigation
-  const nav = document.querySelector("nav");
-  const navLinks = document.querySelectorAll(".nav-links a");
+  const $ = (selector, root = document) =>
+    root.querySelector(selector);
 
-  const menuButton = document.querySelector(
-    ".menu-toggle, .hamburger, .menu-btn"
-  );
+  const $$ = (selector, root = document) =>
+    [...root.querySelectorAll(selector)];
 
-  if (menuButton && nav) {
-    menuButton.addEventListener("click", () => {
-      nav.classList.toggle("active");
-      menuButton.setAttribute(
-        "aria-expanded",
-        nav.classList.contains("active")
-      );
-    });
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  const header = $("header");
+
+  // 1. NAVBAR SCROLL EFFECT
+  function updateHeader() {
+    header?.classList.toggle("scrolled", window.scrollY > 35);
   }
 
-  navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      nav?.classList.remove("active");
-    });
-  });
+  updateHeader();
 
-  // Navbar scroll effect
-  const header = document.querySelector("header");
-
-  function handleScroll() {
-    if (header) {
-      header.classList.toggle("scrolled", window.scrollY > 40);
-    }
-  }
-
-  window.addEventListener("scroll", handleScroll, {
+  window.addEventListener("scroll", updateHeader, {
     passive: true
   });
 
-  handleScroll();
+  // 2. MOBILE MENU
+  const nav = $("nav");
+  const navMenu = $(".nav-links");
 
-  // Smooth scrolling
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener("click", event => {
-      const target = document.querySelector(
-        link.getAttribute("href")
+  if (nav && navMenu && !$(".portfolio-menu-toggle", nav)) {
+    const toggle = document.createElement("button");
+
+    toggle.type = "button";
+    toggle.className = "portfolio-menu-toggle";
+    toggle.setAttribute("aria-label", "Open navigation");
+    toggle.setAttribute("aria-expanded", "false");
+
+    toggle.innerHTML =
+      '<span></span><span></span><span></span>';
+
+    nav.appendChild(toggle);
+
+    function closeMenu() {
+      navMenu.classList.remove("open", "active");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Open navigation");
+    }
+
+    toggle.addEventListener("click", () => {
+      const open =
+        toggle.getAttribute("aria-expanded") !== "true";
+
+      navMenu.classList.toggle("open", open);
+      navMenu.classList.toggle("active", open);
+
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute(
+        "aria-label",
+        open ? "Close navigation" : "Open navigation"
       );
+    });
 
-      if (target) {
-        event.preventDefault();
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
+    $$(".nav-links a").forEach(link => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", event => {
+      if (!nav.contains(event.target)) {
+        closeMenu();
       }
-    });
-  });
-
-  // Active navigation
-  const sections = document.querySelectorAll("section[id]");
-
-  if ("IntersectionObserver" in window) {
-    const sectionObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-
-        navLinks.forEach(link => {
-          link.classList.toggle(
-            "active",
-            link.getAttribute("href") === `#${entry.target.id}`
-          );
-        });
-      });
-    }, {
-      rootMargin: "-35% 0px -55% 0px"
-    });
-
-    sections.forEach(section => {
-      sectionObserver.observe(section);
     });
   }
 
-  // Scroll reveal animation
-  const revealElements = document.querySelectorAll(
-    ".project-card, .service-card, .experience-item, " +
-    ".leadership-item, .about-content, .skills-content"
-  );
+  // 3. SMOOTH SCROLLING
+  $$('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", event => {
+      const href = anchor.getAttribute("href");
 
-  if ("IntersectionObserver" in window) {
+      if (!href || href === "#") return;
+
+      const target = $(href);
+
+      if (!target) return;
+
+      event.preventDefault();
+
+      const offset = (header?.offsetHeight || 0) + 12;
+
+      const top =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        offset;
+
+      window.scrollTo({
+        top,
+        behavior: reducedMotion ? "auto" : "smooth"
+      });
+    });
+  });
+
+  // 4. ACTIVE NAVIGATION
+  const navAnchors = $$('.nav-links a[href^="#"]');
+
+  const observedSections = navAnchors
+    .map(link => $(link.getAttribute("href")))
+    .filter(Boolean);
+
+  if (
+    "IntersectionObserver" in window &&
+    observedSections.length
+  ) {
+    const navObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        navAnchors.forEach(link => {
+          const active =
+            link.getAttribute("href") ===
+            `#${entry.target.id}`;
+
+          link.classList.toggle("active", active);
+
+          if (active) {
+            link.setAttribute("aria-current", "location");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      });
+    }, {
+      rootMargin: "-25% 0px -65% 0px",
+      threshold: 0
+    });
+
+    observedSections.forEach(section => {
+      navObserver.observe(section);
+    });
+  }
+
+  // 5. SCROLL REVEAL ANIMATIONS
+  const revealItems = $$(`
+    .section-title,
+    .about-content,
+    .experience-column,
+    .project-card,
+    .skills-content p,
+    .leadership-item,
+    .service-card,
+    .contact-content
+  `);
+
+  if ("IntersectionObserver" in window && !reducedMotion) {
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
+            entry.target.classList.add("is-visible");
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12 }
+      {
+        threshold: 0.08,
+        rootMargin: "0px 0px -20px 0px"
+      }
     );
 
-    revealElements.forEach(element => {
-      element.classList.add("reveal");
+    revealItems.forEach(element => {
+      element.classList.add("reveal-on-scroll");
       revealObserver.observe(element);
     });
   } else {
-    revealElements.forEach(element => {
-      element.classList.add("visible");
+    revealItems.forEach(element => {
+      element.classList.add("is-visible");
     });
   }
 
-  // Typing effect
-  const typingElement = document.querySelector(".typing-text");
+  // 6. SERVICE REQUEST MODAL
+  const modal = $("#serviceModal");
+  const serviceSelect = $("#serviceType");
 
-  if (typingElement) {
-    const roles = [
-      "Software Developer",
-      "Full Stack Developer",
-      "AI/ML Enthusiast",
-      "Problem Solver"
-    ];
+  let lastFocused = null;
 
-    let roleIndex = 0;
-    let charIndex = 0;
-    let deleting = false;
-
-    function typeEffect() {
-      const currentRole = roles[roleIndex];
-
-      typingElement.textContent = currentRole.substring(
-        0,
-        charIndex
+  function openModal(service = "") {
+    if (!modal) {
+      console.error(
+        "Service modal #serviceModal is missing from index.html"
       );
-
-      if (!deleting) {
-        charIndex++;
-
-        if (charIndex > currentRole.length) {
-          deleting = true;
-          setTimeout(typeEffect, 1200);
-          return;
-        }
-      } else {
-        charIndex--;
-
-        if (charIndex < 0) {
-          charIndex = 0;
-          deleting = false;
-          roleIndex = (roleIndex + 1) % roles.length;
-        }
-      }
-
-      setTimeout(typeEffect, deleting ? 45 : 90);
+      return;
     }
 
-    typeEffect();
-  }
+    lastFocused = document.activeElement;
 
-  // Service request modal
-  const modal = document.getElementById("serviceModal");
+    if (serviceSelect && service) {
+      serviceSelect.value = service;
+    }
 
-  const serviceButtons = document.querySelectorAll(
-    ".service-request-btn, [data-service]"
-  );
-
-  const closeButtons = document.querySelectorAll(
-    "[data-close-service-modal]"
-  );
-
-  const serviceSelect = document.getElementById("serviceType");
-
-  function openModal(serviceName = "") {
-    if (!modal) return;
-
-    modal.classList.add("active");
+    modal.classList.add("is-open", "active");
     modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("modal-open");
 
-    if (serviceSelect && serviceName) {
-      serviceSelect.value = serviceName;
-    }
-
-    const firstInput = modal.querySelector(
-      "input, select, textarea"
+    document.body.classList.add(
+      "service-modal-open",
+      "modal-open"
     );
 
-    setTimeout(() => firstInput?.focus(), 150);
+    const firstInput = $(
+      'input:not([type="hidden"]), select, textarea',
+      modal
+    );
+
+    window.setTimeout(() => {
+      firstInput?.focus();
+    }, 100);
   }
 
   function closeModal() {
     if (!modal) return;
 
-    modal.classList.remove("active");
+    modal.classList.remove("is-open", "active");
     modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("modal-open");
+
+    document.body.classList.remove(
+      "service-modal-open",
+      "modal-open"
+    );
+
+    if (lastFocused?.focus) {
+      lastFocused.focus();
+    }
   }
 
-  serviceButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      openModal(button.dataset.service || "");
-    });
-  });
+  // Event delegation: all service request buttons work.
+  document.addEventListener("click", event => {
+    const requestButton = event.target.closest(
+      ".service-request-btn, [data-service]"
+    );
 
-  closeButtons.forEach(button => {
-    button.addEventListener("click", closeModal);
-  });
+    if (requestButton) {
+      event.preventDefault();
 
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape") {
+      openModal(
+        requestButton.getAttribute("data-service") || ""
+      );
+
+      return;
+    }
+
+    const closeButton = event.target.closest(
+      "[data-close-service-modal], .service-modal-close"
+    );
+
+    if (closeButton) {
+      event.preventDefault();
+      closeModal();
+      return;
+    }
+
+    // Close when clicking the modal backdrop.
+    if (modal && event.target === modal) {
       closeModal();
     }
   });
 
-  // Service form validation
-  const serviceForm = document.querySelector(
-    ".service-request-form"
-  );
+  // Close modal with Escape key.
+  document.addEventListener("keydown", event => {
+    if (
+      event.key === "Escape" &&
+      modal &&
+      (
+        modal.classList.contains("is-open") ||
+        modal.classList.contains("active")
+      )
+    ) {
+      closeModal();
+    }
+  });
 
-  if (serviceForm) {
-    serviceForm.addEventListener("submit", event => {
-      if (!serviceForm.checkValidity()) {
+  // 7. SERVICE FORM VALIDATION
+  const requestForm = $(".service-request-form");
+
+  if (requestForm) {
+    requestForm.addEventListener("submit", event => {
+      if (!requestForm.checkValidity()) {
         event.preventDefault();
-        serviceForm.reportValidity();
+        requestForm.reportValidity();
+        return;
+      }
+
+      const submitButton = $(
+        'button[type="submit"]',
+        requestForm
+      );
+
+      if (submitButton) {
+        submitButton.disabled = true;
+
+        submitButton.innerHTML =
+          'Sending request… <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>';
       }
     });
   }
 
-  // Contact links and current year
-  document.querySelectorAll(".current-year").forEach(element => {
-    element.textContent = new Date().getFullYear();
-  });
+  // 8. PROFILE IMAGE FALLBACK
+  const profile = $("#profileImage");
 
-  // Back to top (if button exists)
-  const backToTop = document.querySelector(".back-to-top");
+  if (profile) {
+    profile.addEventListener("error", () => {
+      const fallback = $("#profileFallback");
 
-  if (backToTop) {
-    backToTop.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    });
+      if (fallback) {
+        fallback.style.display = "flex";
+      }
+
+      profile.style.display = "none";
+    }, { once: true });
   }
 
-  console.log("Amit Kumar Portfolio Loaded Successfully 🚀");
+  // 9. BACK TO TOP BUTTON
+  let topButton = $(
+    ".back-to-top, .floating-action-btn"
+  );
+
+  if (!topButton) {
+    topButton = document.createElement("button");
+
+    topButton.type = "button";
+    topButton.className = "portfolio-back-to-top";
+    topButton.setAttribute("aria-label", "Back to top");
+
+    topButton.innerHTML =
+      '<i class="fas fa-arrow-up"></i>';
+
+    document.body.appendChild(topButton);
+  }
+
+  function updateTopButton() {
+    topButton.classList.toggle(
+      "visible",
+      window.scrollY > 450
+    );
+  }
+
+  updateTopButton();
+
+  window.addEventListener("scroll", updateTopButton, {
+    passive: true
+  });
+
+  topButton.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: reducedMotion ? "auto" : "smooth"
+    });
+  });
+
+  // 10. AUTOMATIC FOOTER YEAR
+  $$(
+    "[data-current-year], #currentYear, .current-year"
+  ).forEach(element => {
+    element.textContent = String(
+      new Date().getFullYear()
+    );
+  });
+
+  // 11. INITIALIZE PORTFOLIO
+  document.documentElement.classList.add("js-loaded");
+
+  console.info(
+    "Portfolio ready — service enquiry modal enabled."
+  );
 });
